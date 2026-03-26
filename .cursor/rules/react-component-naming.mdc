@@ -1,0 +1,25 @@
+---
+description: PascalCase React components; classNames and tailwindVariants (no cn or tv)
+alwaysApply: true
+---
+
+# React components and style utilities
+
+## File and export names
+
+- Place UI components under `components/atoms`, `components/molecules`, or `components/organisms`.
+- **File name = default export component name**, both **PascalCase** (e.g. `Button.tsx` exports `Button`, `Header.tsx` exports `Header`).
+- Prefer **arrow function** components with an explicit props type.
+
+## Style helpers (no abbreviations)
+
+- Use **`classNames`** from `@/libs/utils/classNames/classNames` for clsx + tailwind-merge. Do **not** use **`cn`**.
+- Use **`tailwindVariants`** as the binding for tailwind-variants: `import { tv as tailwindVariants } from "tailwind-variants"`. Do **not** call **`tv`** directly in source.
+
+## Server vs client
+
+- Keep **`tailwindVariants`** style definitions in **server-safe** modules (no `"use client"`) when they must be used from Server Components (e.g. `components/ui/button-variants.ts`). Interactive wrappers stay in `"use client"` files.
+
+## Linting
+
+- **Oxlint** does not enforce PascalCase filenames; follow this rule when adding components.

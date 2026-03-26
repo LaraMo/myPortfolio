@@ -1,0 +1,20 @@
+---
+description: Edit one file at a time; pause for user review before the next file
+alwaysApply: true
+---
+
+# Sequential edits with review
+
+When a task requires changes in **multiple files**:
+
+1. **One file per step** — Apply edits to a **single** file, then stop. Do not edit additional files in the same turn unless the user has approved and asked to continue.
+2. **Summarize before moving on** — After each file change, briefly describe **what** changed and **why**, and point to the file path (and use code citations when helpful). Treat this as a checkpoint for review.
+3. **Wait for go-ahead** — Do not start the next file until the user confirms they are happy with the current change (e.g. “looks good”, “continue”, or specific follow-up on that file).
+4. **Large refactors** — Same rule: one file, review, then the next—even if that makes the overall task take several rounds.
+
+**Exceptions** (only when the user explicitly asks):
+
+- “Change all of these in one go” or “batch the edits”
+- Trivial paired edits the user already approved as a set (e.g. rename across two files after agreeing on the rename)
+
+If unsure whether to batch, default to **one file + review**.
