@@ -1,0 +1,38 @@
+---
+description: Modern React & Next.js—RSC first, lean client trees, data fetching, perf, SEO
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# React and Next.js (App Router)
+
+## Server vs client
+
+- **Prefer Server Components** for `app/` routes, layouts, and any subtree that does not need hooks, browser APIs, or client-only libraries.
+- **Minimize `"use client"`** — push the boundary **down** to the smallest component that needs interactivity (one island vs an entire page).
+- **Do not** mark a file `"use client"` “just in case”; it increases bundle size and limits server-only APIs.
+
+## Effects and state
+
+- **Avoid unnecessary `useEffect`** — use it to **synchronize with an external system** (subscriptions, timers, non-React widgets), not to derive state from props/state (compute during render or use `useMemo` when expensive).
+- Prefer **event handlers** and **Server Actions** / forms for mutations instead of effect-driven “fetch on mount” when RSC or action can own the flow.
+
+## Data fetching
+
+- **Fetch on the server** in Server Components (or `fetch` with Next caching/`revalidate` where appropriate) for initial page data.
+- Avoid **waterfalls** without reason: parallelize independent fetches; consider loading UI (`loading.tsx`, `Suspense`) instead of blocking the whole page.
+- **Client fetching** (`useEffect` + `fetch`, TanStack Query, SWR) only when data must refresh **after** load or depends on client-only state—document why server fetch is insufficient.
+
+## Performance
+
+- Use **`next/image`** with sensible `sizes` and dimensions; lazy-load heavy **client** modules with `next/dynamic` when below the fold or rare.
+- Keep **client bundles** small: fewer client parents, fewer large dependencies in client trees.
+
+## SEO and rendering
+
+- Put **critical, indexable content** in the **server** tree when possible; use **`metadata` / `generateMetadata`** in layouts/pages.
+- Prefer **semantic HTML** for structure (headings, main, article) — aligns with accessibility and SEO.
+
+## When the user asks for a “quick client-only” fix
+
+- If it conflicts with the above, **state the tradeoff** (bundle, SEO, duplication) and offer a server-first alternative when reasonable.

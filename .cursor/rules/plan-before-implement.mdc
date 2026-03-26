@@ -1,0 +1,21 @@
+---
+description: Explain approach and options first; recommend one path; code only after user confirms
+alwaysApply: true
+---
+
+# Plan before implementing
+
+## Before writing or editing code
+
+1. **Explain the approach** — Summarize how you would solve the problem (steps, boundaries, key files touched) without dumping a full patch yet.
+2. **Options** — When there are meaningful alternatives (e.g. client vs server component, new abstraction vs inline change, library vs hand-rolled), list **2–3 options** with short pros/cons.
+3. **Recommendation** — State **one preferred option** and **why** (maintainability, risk, fit with existing patterns, tradeoffs).
+4. **Confirmation** — **Do not implement** until the user confirms (e.g. “yes”, “go ahead”, “use option B”, “proceed”). If they already said in the **same** message to implement or apply a specific plan, treat that as confirmation.
+
+## Scope
+
+- Applies to **non-trivial** work: new features, refactors, multi-file changes, or anything architectural. **Trivial** fixes (typo, obvious one-liner the user explicitly pointed to) may skip the full options list but should still **one-line** the intent before editing—unless the user’s message is purely “implement X” with full detail.
+
+## With other rules
+
+- After confirmation, follow the **sequential-edits-review** project rule: **one file per step**, side effects, pause between files.

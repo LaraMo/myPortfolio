@@ -1,0 +1,32 @@
+---
+description: UI work—atomic design, tailwind-variants, DRY Tailwind, a11y, design tokens
+globs: "**/*.tsx"
+alwaysApply: false
+---
+
+# UI and styling
+
+## Structure (atomic design)
+
+- Place UI in **`components/atoms`**, **`components/molecules`**, and **`components/organisms`** by responsibility (smallest → composed → section-level).
+- **`components/ui`** is for shadcn-style primitives only; build product UI by **composing** them in atoms/molecules/organisms—not by pasting large class strings into `app/page.tsx`.
+
+## Tailwind and variants
+
+- **Avoid duplicating** long Tailwind strings across files. Extract **variants** with **`tailwindVariants`** (`import { tv as tailwindVariants } from "tailwind-variants"`). Merge classes with **`classNames`** from `@/libs/utils/classNames/classNames`.
+- Prefer **reusable components** (and shared variants) over **inline `style={}`** unless there is a clear reason (e.g. dynamic values not expressible in Tailwind without arbitrary values).
+
+## Accessibility
+
+- Use **semantic HTML** (`button`, `a`, headings, `nav`, `main`, `label` + `htmlFor`).
+- Support **keyboard** use: focus order, visible **focus** styles (`focus-visible`), no keyboard traps in custom widgets.
+- Use **ARIA** when semantics are insufficient: `aria-label` / `aria-labelledby` / `aria-describedby`, `aria-expanded`, roles only when needed. Decorative icons: `aria-hidden`.
+
+## Design system consistency
+
+- Prefer **theme tokens** and utilities from **`app/globals.css`** / shadcn variables (`bg-background`, `text-foreground`, `border-border`, `text-muted-foreground`, etc.) over one-off hex/rgb except rare brand accents.
+- **Dark mode**: respect `.dark` / `next-themes` class strategy; test both themes for contrast and focus visibility.
+
+## Conflicts with quick hacks
+
+- If a shortcut would duplicate classes or break a11y, **call it out** and prefer the pattern above unless the user explicitly accepts debt.
