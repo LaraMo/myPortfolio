@@ -5,6 +5,7 @@ import {
 } from "@/components/molecules/AccordionCard";
 import { Header } from "@/components/molecules/Header";
 import { Skill } from "@/components/molecules/Skill";
+import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { portfolioContent } from "@/lib/portfolio-content";
@@ -41,24 +42,7 @@ export default function Home() {
             </AccordionCard>
 
             <AccordionCard title={work.title}>
-              <ol className="list-decimal space-y-6 pl-5">
-                {work.entries.map((job) => (
-                  <li key={job.period} className="marker:font-medium">
-                    <Typography variant="small" className="text-muted-foreground">
-                      {job.period}
-                    </Typography>
-                    <Typography variant="h4" as="p" className="mt-1">
-                      {job.title}{" "}
-                      <span className="text-muted-foreground">
-                        @ {job.company}
-                      </span>
-                    </Typography>
-                    <Typography variant="body" as="p" className="mt-2">
-                      {job.description}
-                    </Typography>
-                  </li>
-                ))}
-              </ol>
+              <ExperienceTimeline entries={[...work.entries]} />
             </AccordionCard>
 
             <AccordionCard title={articles.title}>

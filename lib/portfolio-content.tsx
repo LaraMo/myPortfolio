@@ -16,6 +16,8 @@ export type WorkEntry = {
   title: string;
   company: string;
   description: string;
+  /** Public path to company logo (mock asset under `/public/work/`). */
+  logoSrc: string;
 };
 
 export type ArticleEntry = {
@@ -78,6 +80,7 @@ export const portfolioContent = {
         company: "Ubisoft",
         description:
           "Code new and existing UI components and suggest improvements",
+        logoSrc: "/work/ubisoft.svg",
       },
       {
         period: "September 2020 - March 2022",
@@ -85,6 +88,7 @@ export const portfolioContent = {
         company: "Bombardier",
         description:
           "Developing a mobile app to track maintenance status of aircrafts built using ReactNative.js & Redux.js. In charge of interviewing and onboarding new dev interns",
+        logoSrc: "/work/bombardier.svg",
       },
       {
         period: "June 2019 - September 2020",
@@ -92,6 +96,7 @@ export const portfolioContent = {
         company: "Neptronic",
         description:
           "Implemented new web pages for the in-house business tools using React.js, C#, ASP.NET, and Microsoft SQL Server",
+        logoSrc: "/work/neptronic.svg",
       },
     ] satisfies WorkEntry[],
   },
