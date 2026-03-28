@@ -7,7 +7,7 @@ export const accordionCardVariants = tailwindVariants({
     triggerInner: "flex min-w-0 flex-1 items-center gap-3",
     panel: "border-t border-border/40 px-4 pb-4 pt-4 group-data-[size=sm]/card:px-3",
     chevron:
-      "size-8 shrink-0 text-muted-foreground transition-transform duration-200 ease-out md:size-9",
+      "size-8 shrink-0 self-center text-muted-foreground transition-transform duration-200 ease-out md:size-9",
   },
   variants: {
     open: {

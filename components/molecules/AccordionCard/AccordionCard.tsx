@@ -77,7 +77,7 @@ export const AccordionCard = ({
         <button
           id={headerId}
           type="button"
-          className={classNames(trigger(), "px-4 pb-0 pt-4")}
+          className={classNames(trigger(), "px-4 py-4")}
           aria-expanded={open}
           aria-controls={panelId}
           onClick={() => setOpen((value) => !value)}

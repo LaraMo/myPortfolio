@@ -39,9 +39,9 @@ export const SectionTitle = ({ title, mode = "standalone" }: SectionTitleProps) 
 
   if (inTrigger) {
     return (
-      <Wrapper className="flex min-w-0 flex-1 flex-row flex-wrap items-baseline gap-x-2 gap-y-0.5">
+      <Wrapper className="flex min-w-0 flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
         <span
-          className="shrink-0 translate-y-[0.05em] font-heading text-5xl font-bold leading-none tracking-tight text-fuchsia-600 md:text-6xl dark:text-fuchsia-400"
+          className="shrink-0 font-heading text-5xl font-bold leading-none tracking-tight text-fuchsia-600 md:text-6xl dark:text-fuchsia-400"
           aria-hidden
         >
           {initial}
