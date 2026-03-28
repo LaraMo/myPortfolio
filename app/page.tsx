@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-full flex-1 flex-col">
-      <Header cvUrl={header.cvUrl} byline={header.byline} />
+      <Header cvUrl={header.cvUrl} />
       <main className="flex-1">
         <Hero
           image={hero.image}

@@ -33,7 +33,6 @@ export const Typography = ({
   as,
   variant = "body",
   gradient = false,
-  cursive = false,
   className,
   ...props
 }: TypographyProps) => {
@@ -42,7 +41,7 @@ export const Typography = ({
   return (
     <Component
       className={classNames(
-        typographyVariants({ variant, gradient, cursive }),
+        typographyVariants({ variant, gradient }),
         className
       )}
       {...props}

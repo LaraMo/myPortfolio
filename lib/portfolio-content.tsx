@@ -27,7 +27,6 @@ export type ArticleEntry = {
 export const portfolioContent = {
   header: {
     cvUrl: "https://example.com/liora-lara-mezirovsky-resume.pdf",
-    byline: "Developed by LaraMo",
   },
   hero: {
     image: "/lara.png" as const,

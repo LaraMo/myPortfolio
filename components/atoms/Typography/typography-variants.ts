@@ -22,15 +22,10 @@ export const typographyVariants = tailwindVariants({
       false: "",
       true: "bg-gradient-to-r from-fuchsia-600 via-purple-600 to-violet-700 bg-clip-text text-transparent dark:from-fuchsia-400 dark:via-purple-400 dark:to-violet-400",
     },
-    cursive: {
-      false: "",
-      true: "font-[family-name:var(--font-signature)] text-2xl font-normal normal-case tracking-normal sm:text-3xl",
-    },
   },
   defaultVariants: {
     variant: "body",
     gradient: false,
-    cursive: false,
   },
 });
 

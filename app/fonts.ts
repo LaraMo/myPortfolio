@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Great_Vibes } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 
 export const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,15 +10,8 @@ export const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const greatVibes = Great_Vibes({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-signature",
-});
-
 /** Apply on `<html>` so `globals.css` @theme font tokens resolve. */
 export const fontVariableClassNames = [
   geistSans.variable,
   geistMono.variable,
-  greatVibes.variable,
 ].join(" ");
