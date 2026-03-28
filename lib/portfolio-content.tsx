@@ -34,10 +34,10 @@ export const portfolioContent = {
     title: "Liora Lara Mezirovsky",
     imageAlt: "Portrait illustration of Liora Lara Mezirovsky",
     subtitles: [
-      "software developer",
-      "coffee lover",
-      "front-end enthusiast",
-      "React developer",
+      "curious software developer 💻",
+      "coffee lover ☕",
+      "mom to a cute baby boy 🍼",
+      "wonderlust 🌍",
     ],
   },
   intro: {
