@@ -3,11 +3,14 @@ import {
   AccordionCard,
   AccordionCardGroup,
 } from "@/components/molecules/AccordionCard";
+import { ArticlePreview } from "@/components/molecules/ArticlePreview";
 import { Header } from "@/components/molecules/Header";
 import { Skill } from "@/components/molecules/Skill";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
+import { buttonVariants } from "@/components/ui/button/button-variants";
+import { classNames } from "@/libs/utils/classNames/classNames";
 import { portfolioContent } from "@/lib/portfolio-content";
 
 export default function Home() {
@@ -46,24 +49,46 @@ export default function Home() {
             </AccordionCard>
 
             <AccordionCard title={articles.title}>
-              <ul className="space-y-4">
-                {articles.entries.map((article) => (
-                  <li key={article.title}>
-                    <Typography variant="h5" as="p">
-                      {article.title}
-                    </Typography>
-                    <Typography variant="caption" as="p">
-                      {article.ago}
-                    </Typography>
-                    <Typography
-                      variant="small"
-                      className="mt-1 text-muted-foreground"
+              <div className="flex flex-col gap-6">
+                <ul
+                  className="grid list-none grid-cols-1 gap-4 p-0 md:grid-cols-3 md:items-stretch"
+                  role="list"
+                >
+                  {articles.entries.map((article, index) => (
+                    <li
+                      key={article.title}
+                      className="flex min-h-0 min-w-0 flex-col"
                     >
-                      {article.tags.map((tag) => `#${tag}`).join(" ")}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
+                      <ArticlePreview
+                        title={article.title}
+                        preview={article.preview}
+                        image={{
+                          src: article.imageSrc,
+                          alt: article.imageAlt,
+                        }}
+                        publishedAt={article.publishedAt}
+                        tags={article.tags}
+                        href={article.href}
+                        headingLevel={3}
+                        titleId={`article-preview-${index}`}
+                        density="compact"
+                        className="min-h-0 flex-1"
+                      />
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={articles.catalogUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={classNames(
+                    buttonVariants({ variant: "outline", size: "default" }),
+                    "w-full justify-center self-center sm:w-auto"
+                  )}
+                >
+                  {articles.catalogButtonLabel}
+                </a>
+              </div>
             </AccordionCard>
           </AccordionCardGroup>
         </div>

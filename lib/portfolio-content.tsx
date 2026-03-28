@@ -22,7 +22,12 @@ export type WorkEntry = {
 
 export type ArticleEntry = {
   title: string;
-  ago: string;
+  /** ISO 8601 date string for `<time dateTime>` and display. */
+  publishedAt: string;
+  preview: string;
+  imageSrc: string;
+  imageAlt: string;
+  href: string;
   tags: string[];
 };
 
@@ -102,21 +107,73 @@ export const portfolioContent = {
   },
   articles: {
     title: "A few articles I wrote",
+    catalogUrl: "https://medium.com/@laramo",
+    catalogButtonLabel: "View full catalog here",
     entries: [
       {
         title: "What's CORS?",
-        ago: "33 days ago",
+        publishedAt: "2025-02-22",
+        preview:
+          "A practical look at cross-origin requests, why browsers enforce the same-origin policy, and how CORS headers let servers opt in to sharing resources safely.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the CORS article",
+        href: "https://example.com/articles/cors",
         tags: ["javascript", "front-end-development", "cors"],
       },
       {
         title: "Did you know? (JS & React Edition)",
-        ago: "47 days ago",
-        tags: ["javascript-tips", "javascript", "react", "javascript-development"],
+        publishedAt: "2025-02-08",
+        preview:
+          "Short tips and lesser-known behaviors in JavaScript and React that can save debugging time—from closures to effect dependencies.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the JS and React tips article",
+        href: "https://example.com/articles/js-react-tips",
+        tags: [
+          "javascript-tips",
+          "javascript",
+          "react",
+          "javascript-development",
+        ],
       },
       {
         title: "NPM — Ninja Programmer Mindset?",
-        ago: "133 days ago",
+        publishedAt: "2024-11-14",
+        preview:
+          "How package management fits into a disciplined workflow: versioning, audits, and keeping dependencies understandable as projects grow.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the NPM article",
+        href: "https://example.com/articles/npm-mindset",
         tags: ["npm", "nodejs"],
+      },
+      {
+        title: "Testing UI with confidence",
+        publishedAt: "2024-09-03",
+        preview:
+          "Practical patterns for component tests: what to assert, how to avoid flaky selectors, and when integration tests pay off.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the testing article",
+        href: "https://example.com/articles/ui-testing",
+        tags: ["testing", "react", "quality"],
+      },
+      {
+        title: "CSS layout mental models",
+        publishedAt: "2024-07-18",
+        preview:
+          "Flexbox vs grid in real pages: picking the right tool, common pitfalls, and keeping responsive layouts predictable.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the CSS layout article",
+        href: "https://example.com/articles/css-layout",
+        tags: ["css", "layout", "responsive"],
+      },
+      {
+        title: "Accessibility in everyday PRs",
+        publishedAt: "2024-05-01",
+        preview:
+          "Small habits that add up: focus states, labels, and keyboard paths without waiting for a dedicated audit.",
+        imageSrc: "/lara.png",
+        imageAlt: "Decorative preview image for the accessibility article",
+        href: "https://example.com/articles/a11y-prs",
+        tags: ["accessibility", "frontend", "ux"],
       },
     ] satisfies ArticleEntry[],
   },
