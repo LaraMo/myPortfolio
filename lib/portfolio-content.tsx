@@ -189,3 +189,9 @@ export const portfolioContent = {
     copyrightName: "Liora Lara Mezirovsky",
   },
 } as const;
+
+/** Intro, skills, work, and articles blocks for the home accordion. */
+export type PortfolioMainSections = Pick<
+  typeof portfolioContent,
+  "intro" | "skills" | "work" | "articles"
+>;
