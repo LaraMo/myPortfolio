@@ -41,13 +41,13 @@ export const portfolioContent = {
     ],
   },
   intro: {
-    title: "Let me introduce myself",
+    title: "Little bit about me",
     emoji: "👋",
     body:
       "I am a skilled and motivated software developer with 4+ years experience in developing innovative and efficient software solutions. I am proficient in React.js and Javascript with a focus on front-end development. I am interested in web/mobile development offering enthusiasm and understanding of various programming languages and frameworks.",
   },
   skills: {
-    title: "A skill or two",
+    title: "A few skills",
     items: [
       { label: "Javascript", icon: Braces },
       { label: "SCSS/SASS/CSS", icon: Paintbrush },
@@ -71,7 +71,7 @@ export const portfolioContent = {
     ] satisfies SkillItem[],
   },
   work: {
-    title: "Relevant work XP",
+    title: "Relevant work experience",
     entries: [
       {
         period: "March 2022 - Present",

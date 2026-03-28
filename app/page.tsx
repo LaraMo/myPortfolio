@@ -5,8 +5,6 @@ import { Skill } from "@/components/molecules/Skill";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { portfolioContent } from "@/lib/portfolio-content";
-import { buttonVariants } from "@/components/ui/button";
-import { classNames } from "@/libs/utils/classNames/classNames";
 
 export default function Home() {
   const { header, hero, intro, skills, work, articles, contact, footer } =
@@ -77,26 +75,13 @@ export default function Home() {
               Read More — links coming soon.
             </Typography>
           </Card>
-
-          <Card title={contact.title}>
-            <Typography variant="body" as="p">
-              {contact.body}
-            </Typography>
-            <div className="mt-4">
-              <a
-                href={contact.buttonHref}
-                className={classNames(
-                  buttonVariants({ variant: "glass", size: "sm" }),
-                  "inline-flex no-underline"
-                )}
-              >
-                {contact.buttonLabel}
-              </a>
-            </div>
-          </Card>
         </div>
       </main>
-      <Footer note={footer.note} copyrightName={footer.copyrightName} />
+      <Footer
+        contact={contact}
+        note={footer.note}
+        copyrightName={footer.copyrightName}
+      />
     </div>
   );
 }
