@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "shadcn": {
+      "command": "/bin/zsh",
+      "args": ["-il", "-c", "exec npx -y shadcn@latest mcp"]
+    }
+  }
+}
