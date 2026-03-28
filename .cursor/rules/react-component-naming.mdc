@@ -7,8 +7,9 @@ alwaysApply: true
 
 ## File and export names
 
-- Place UI components under `components/atoms`, `components/molecules`, or `components/organisms`.
-- **File name = default export component name**, both **PascalCase** (e.g. `Button.tsx` exports `Button`, `Header.tsx` exports `Header`).
+- Place UI components under `components/atoms`, `components/molecules`, or `components/organisms`, each in its **own folder** with **`index.ts`** (see `component-module-layout.mdc`).
+- **File name = default export component name**, both **PascalCase** (e.g. `atoms/Button/Button.tsx` exports `Button`, `molecules/Header/Header.tsx` exports `Header`).
+- Exception: under **`components/ui/<primitive>/`**, the main file may be **lowercase** (e.g. `button/button.tsx`) to match shadcn conventions; **`*-variants.ts`** stays kebab-case.
 - Prefer **arrow function** components with an explicit props type.
 
 ## Style helpers (no abbreviations)
@@ -18,7 +19,7 @@ alwaysApply: true
 
 ## Server vs client
 
-- Keep **`tailwindVariants`** style definitions in **server-safe** modules (no `"use client"`) when they must be used from Server Components (e.g. `components/ui/button-variants.ts`). Interactive wrappers stay in `"use client"` files.
+- Keep **`tailwindVariants`** style definitions in **server-safe** modules (no `"use client"`) when they must be used from Server Components (e.g. `components/ui/button/button-variants.ts`). Interactive wrappers stay in `"use client"` files.
 
 ## Linting
 

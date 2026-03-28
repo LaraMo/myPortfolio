@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-import { Icon } from "@/components/atoms/Icon";
+import { Icon } from "@/components/ui/icon";
 import { Typography } from "@/components/atoms/Typography";
 import { classNames } from "@/libs/utils/classNames/classNames";
 

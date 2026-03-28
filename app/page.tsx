@@ -5,7 +5,7 @@ import { Skill } from "@/components/molecules/Skill";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { portfolioContent } from "@/lib/portfolio-content";
-import { buttonVariants } from "@/components/ui/button-variants";
+import { buttonVariants } from "@/components/ui/button";
 import { classNames } from "@/libs/utils/classNames/classNames";
 
 export default function Home() {

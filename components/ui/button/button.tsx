@@ -22,6 +22,3 @@ export const Button = ({
     />
   );
 };
-
-export { buttonVariants } from "./button-variants";
-export type { ButtonVariantProps } from "./button-variants";

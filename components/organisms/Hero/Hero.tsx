@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { PortfolioImage } from "@/components/atoms/PortfolioImage";
+import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
 import type { ImageProps } from "next/image";
 
@@ -43,7 +43,7 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
       className="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16 sm:flex-row sm:items-center sm:gap-14 sm:py-20"
       aria-labelledby="hero-heading"
     >
-      <PortfolioImage
+      <Image
         src={image}
         alt={imageAlt}
         width={220}

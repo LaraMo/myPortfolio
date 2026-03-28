@@ -2,18 +2,13 @@ import type { LucideIcon } from "lucide-react";
 
 import { classNames } from "@/libs/utils/classNames/classNames";
 
-const sizeClassNames = {
-  sm: "size-3.5",
-  md: "size-4",
-  lg: "size-5",
-} as const;
+import { iconVariants, type IconVariantProps } from "./icon-variants";
 
 export type IconProps = {
   icon: LucideIcon;
-  size?: keyof typeof sizeClassNames;
   className?: string;
   "aria-hidden"?: boolean;
-};
+} & IconVariantProps;
 
 export const Icon = ({
   icon: LucideComponent,
@@ -24,7 +19,7 @@ export const Icon = ({
   return (
     <LucideComponent
       aria-hidden={ariaHidden}
-      className={classNames(sizeClassNames[size], className)}
+      className={classNames(iconVariants({ size }), className)}
     />
   );
 };

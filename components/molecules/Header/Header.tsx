@@ -5,8 +5,8 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/atoms/Button";
-import { buttonVariants } from "@/components/ui/button-variants";
-import { Icon } from "@/components/atoms/Icon";
+import { buttonVariants } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { Typography } from "@/components/atoms/Typography";
 import { classNames } from "@/libs/utils/classNames/classNames";
 
