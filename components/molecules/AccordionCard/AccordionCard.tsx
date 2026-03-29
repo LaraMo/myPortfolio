@@ -9,6 +9,7 @@ import {
   useEffect,
   useId,
   useMemo,
+  useRef,
   useState,
   type ReactElement,
   type ReactNode,
@@ -44,6 +45,28 @@ export const AccordionCard = ({
   const headerId = `${panelId}-header`;
 
   const [open, setOpen] = useState(sectionIndex === 0);
+  const [shinePulse, setShinePulse] = useState(false);
+  const pulseTimerRef = useRef<number | null>(null);
+
+  const triggerShinePulse = useCallback(() => {
+    setShinePulse(true);
+    if (pulseTimerRef.current) {
+      window.clearTimeout(pulseTimerRef.current);
+    }
+    pulseTimerRef.current = window.setTimeout(() => {
+      setShinePulse(false);
+      pulseTimerRef.current = null;
+    }, 750);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (pulseTimerRef.current) {
+        window.clearTimeout(pulseTimerRef.current);
+      }
+    },
+    []
+  );
 
   const applyLayoutDefault = useCallback(() => {
     const mq = window.matchMedia(MD_DOWN);
@@ -67,43 +90,56 @@ export const AccordionCard = ({
   );
 
   return (
-    <UiCard
+    <div
       className={classNames(
-        "border-[var(--glass-border)] bg-[var(--glass-surface)] shadow-lg backdrop-blur-xl",
+        "accordion-card-shell group/accordion",
+        shinePulse && "accordion-card-shell--pulse",
         className
       )}
+      data-expanded={open ? "true" : "false"}
     >
-      <CardHeader className="p-0">
-        <button
-          id={headerId}
-          type="button"
-          className={classNames(trigger(), "px-4 py-4")}
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={() => setOpen((value) => !value)}
-          aria-label={`${open ? "Collapse" : "Expand"} section: ${title.trim()}`}
+      <div className="accordion-card-shell__rotor-wrap">
+        <UiCard
+          className={classNames(
+            "accordion-card-shell__inner border-0 shadow-lg ring-0"
+          )}
         >
-          <span className={triggerInner()}>
-            <span
-              data-slot="card-title"
-              className="font-heading min-w-0 flex-1 text-base font-normal leading-snug group-data-[size=sm]/card:text-sm"
+          <CardHeader className="p-0">
+            <button
+              id={headerId}
+              type="button"
+              className={classNames(trigger(), "px-4 py-4")}
+              aria-expanded={open}
+              aria-controls={panelId}
+              onClick={() => {
+                setOpen((value) => !value);
+                triggerShinePulse();
+              }}
+              aria-label={`${open ? "Collapse" : "Expand"} section: ${title.trim()}`}
             >
-              <SectionTitle title={title} mode="inTrigger" />
-            </span>
-            <ChevronDown className={chevron()} aria-hidden />
-          </span>
-        </button>
-      </CardHeader>
-      <CardContent
-        id={panelId}
-        role="region"
-        aria-labelledby={headerId}
-        hidden={!open}
-        className={panel()}
-      >
-        {children}
-      </CardContent>
-    </UiCard>
+              <span className={triggerInner()}>
+                <span
+                  data-slot="card-title"
+                  className="font-heading min-w-0 flex-1 text-base font-normal leading-snug group-data-[size=sm]/card:text-sm"
+                >
+                  <SectionTitle title={title} mode="inTrigger" />
+                </span>
+                <ChevronDown className={chevron()} aria-hidden />
+              </span>
+            </button>
+          </CardHeader>
+          <CardContent
+            id={panelId}
+            role="region"
+            aria-labelledby={headerId}
+            hidden={!open}
+            className={panel()}
+          >
+            {children}
+          </CardContent>
+        </UiCard>
+      </div>
+    </div>
   );
 };
 

@@ -106,3 +106,113 @@
     @apply font-sans;
   }
 }
+
+@layer components {
+  .accordion-card-shell {
+    position: relative;
+    border-radius: var(--radius-xl);
+    isolation: isolate;
+  }
+
+  /*
+   * Shine lives only in the 1px gutter: wrap uses padding; ::before sits behind the
+   * inner card so only the ring (not the face) shows the gradient. Inner uses a
+   * mostly opaque fill so the rotating gradient does not bleed through frosted glass.
+   */
+  .accordion-card-shell__rotor-wrap {
+    position: relative;
+    border-radius: var(--radius-xl);
+    padding: 1px;
+    overflow: hidden;
+  }
+
+  .accordion-card-shell__rotor-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    transform: rotate(0deg);
+    transform-origin: center center;
+    pointer-events: none;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 52deg,
+      oklch(0.62 0.24 320 / 0.88) 86deg,
+      oklch(0.78 0.14 300 / 0.5) 116deg,
+      transparent 152deg,
+      transparent 360deg
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .accordion-card-shell[data-expanded="false"]:hover
+    .accordion-card-shell__rotor-wrap::before {
+    opacity: 1;
+    animation: accordion-shine-spin 7s linear infinite;
+  }
+
+  .accordion-card-shell--pulse .accordion-card-shell__rotor-wrap::before {
+    opacity: 1;
+    animation: accordion-shine-tick 0.75s cubic-bezier(0.32, 0.72, 0.35, 1) 1
+      forwards !important;
+  }
+
+  .dark .accordion-card-shell__rotor-wrap::before {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 52deg,
+      oklch(0.72 0.22 315 / 0.92) 86deg,
+      oklch(0.88 0.1 300 / 0.62) 116deg,
+      transparent 152deg,
+      transparent 360deg
+    );
+  }
+
+  .accordion-card-shell .accordion-card-shell__inner {
+    position: relative;
+    z-index: 1;
+    border-radius: calc(var(--radius-xl) - 1px);
+    background-color: color-mix(in oklch, var(--card) 90%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  .dark .accordion-card-shell .accordion-card-shell__inner {
+    background-color: color-mix(in oklch, var(--card) 88%, transparent);
+  }
+
+  @keyframes accordion-shine-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes accordion-shine-tick {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .accordion-card-shell__rotor-wrap::before,
+    .accordion-card-shell--pulse .accordion-card-shell__rotor-wrap::before {
+      animation: none !important;
+      transition: opacity 0.2s ease;
+    }
+
+    .accordion-card-shell[data-expanded="false"]:hover
+      .accordion-card-shell__rotor-wrap::before {
+      opacity: 0.32;
+      transform: rotate(0deg);
+    }
+
+    .accordion-card-shell--pulse .accordion-card-shell__rotor-wrap::before {
+      opacity: 0.4;
+      transform: rotate(0deg);
+    }
+  }
+}
