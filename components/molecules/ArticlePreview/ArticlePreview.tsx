@@ -164,7 +164,7 @@ export const ArticlePreview = ({
                     variant="secondary"
                     className={isCompact ? "text-[0.65rem]" : undefined}
                   >
-                    {tag}
+                    #{tag}
                   </Badge>
                 </li>
               ))}
@@ -182,7 +182,7 @@ export const ArticlePreview = ({
           <Link
             href={href}
             className={classNames(
-              "font-medium text-primary underline-offset-4 outline-none hover:underline focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              "inline-flex font-semibold text-sky-600 underline decoration-sky-600/80 underline-offset-4 outline-none transition-colors hover:text-sky-700 hover:decoration-sky-700 dark:text-sky-400 dark:decoration-sky-400/80 dark:hover:text-sky-300 dark:hover:decoration-sky-300 focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
               isCompact ? "text-xs" : "text-sm"
             )}
             aria-label={`Read more: ${title}`}

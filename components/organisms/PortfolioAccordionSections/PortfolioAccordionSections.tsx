@@ -48,7 +48,7 @@ export const PortfolioAccordionSections = ({
             >
               {articles.entries.map((article, index) => (
                 <li
-                  key={article.title}
+                  key={article.href}
                   className="flex min-h-0 min-w-0 flex-col"
                 >
                   <ArticlePreview
