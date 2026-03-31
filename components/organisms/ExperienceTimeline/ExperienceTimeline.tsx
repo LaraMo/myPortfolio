@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import { Typography } from "@/components/atoms/Typography";
-import { classNames } from "@/libs/utils/classNames/classNames";
-import type { WorkEntry } from "@/lib/portfolio-content";
+import { classNames } from "@/lib/utils/classNames/classNames";
+import type { WorkEntry } from "@/content/portfolio-content";
 
 import { experienceTimelineVariants } from "./experience-timeline-variants";
 

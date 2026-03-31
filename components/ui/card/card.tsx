@@ -1,6 +1,6 @@
 import type { ComponentProps } from "react";
 
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 export type CardProps = ComponentProps<"div"> & { size?: "default" | "sm" };
 

@@ -1,4 +1,4 @@
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 import { brandLmMarkVariants } from "./brand-lm-mark-variants";
 

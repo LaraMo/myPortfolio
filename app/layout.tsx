@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { siteConfig } from "@/lib/site";
-import { ThemeProvider } from "@/libs/utils/theme/ThemeProvider";
+import { siteConfig } from "@/content/site";
+import { ThemeProvider } from "@/lib/utils/theme/ThemeProvider";
 import { fontVariableClassNames } from "./fonts";
 import "./globals.css";
 

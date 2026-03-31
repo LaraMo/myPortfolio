@@ -1,6 +1,6 @@
 import RSSParser from "rss-parser";
 
-import type { ArticleEntry } from "@/lib/portfolio-content";
+import type { ArticleEntry } from "@/content/portfolio-content";
 
 const MEDIUM_FEED_URL = "https://medium.com/feed/@laramo" as const;
 

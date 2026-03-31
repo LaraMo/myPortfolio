@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 import { badgeVariants, type BadgeVariantProps } from "./badge-variants";
 

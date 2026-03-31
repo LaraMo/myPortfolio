@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 const glassCard =
   "border-[var(--glass-border)] bg-[var(--glass-surface)] shadow-lg backdrop-blur-xl";

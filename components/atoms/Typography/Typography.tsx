@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, ElementType } from "react";
 import type { VariantProps } from "tailwind-variants";
 
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 import { typographyVariants } from "./typography-variants";
 

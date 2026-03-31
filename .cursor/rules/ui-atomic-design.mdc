@@ -13,7 +13,7 @@ alwaysApply: false
 
 ## Tailwind and variants
 
-- **Avoid duplicating** long Tailwind strings across files. Extract **variants** with **`tailwindVariants`** (`import { tv as tailwindVariants } from "tailwind-variants"`). Merge classes with **`classNames`** from `@/libs/utils/classNames/classNames`.
+- **Avoid duplicating** long Tailwind strings across files. Extract **variants** with **`tailwindVariants`** (`import { tv as tailwindVariants } from "tailwind-variants"`). Merge classes with **`classNames`** from `@/lib/utils/classNames/classNames`.
 - Prefer **reusable components** (and shared variants) over **inline `style={}`** unless there is a clear reason (e.g. dynamic values not expressible in Tailwind without arbitrary values).
 
 ## Accessibility

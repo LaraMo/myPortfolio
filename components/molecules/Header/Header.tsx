@@ -8,7 +8,7 @@ import { BrandLmMark } from "@/components/atoms/BrandLmMark";
 import { Button } from "@/components/atoms/Button";
 import { buttonVariants } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 export type HeaderProps = {
   cvUrl: string;

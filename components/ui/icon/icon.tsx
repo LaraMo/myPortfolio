@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 import { iconVariants, type IconVariantProps } from "./icon-variants";
 

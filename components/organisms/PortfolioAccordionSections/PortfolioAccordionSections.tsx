@@ -7,8 +7,8 @@ import { ArticlePreview } from "@/components/molecules/ArticlePreview";
 import { Skill } from "@/components/molecules/Skill";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { buttonVariants } from "@/components/ui/button/button-variants";
-import { classNames } from "@/libs/utils/classNames/classNames";
-import type { PortfolioMainSections } from "@/lib/portfolio-content";
+import { classNames } from "@/lib/utils/classNames/classNames";
+import type { PortfolioMainSections } from "@/content/portfolio-content";
 
 export type PortfolioAccordionSectionsProps = {
   sections: PortfolioMainSections;

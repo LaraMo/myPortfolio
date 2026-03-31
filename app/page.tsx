@@ -2,8 +2,8 @@ import { Header } from "@/components/molecules/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
 import { PortfolioAccordionSections } from "@/components/organisms/PortfolioAccordionSections";
-import { getMediumArticleEntries } from "@/lib/medium-articles";
-import { articlesSectionMeta, portfolioContent } from "@/lib/portfolio-content";
+import { getMediumArticleEntries } from "@/content/medium-articles";
+import { articlesSectionMeta, portfolioContent } from "@/content/portfolio-content";
 
 export default async function Home() {
   const { header, hero, contact, footer, intro, skills, work } = portfolioContent;

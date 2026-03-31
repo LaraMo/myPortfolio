@@ -1,6 +1,6 @@
 import { Typography } from "@/components/atoms/Typography";
 import { buttonVariants } from "@/components/ui/button";
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 export type FooterContact = {
   title: string;

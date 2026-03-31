@@ -9,5 +9,5 @@ Folder layout and barrels: **`component-module-layout.mdc`**.
 
 - When a component uses **`tailwindVariants`** for styling API (`variant`, `size`, etc.), define the variant config in a **sibling `*-variants.ts`** file in the same folder (e.g. `button/button-variants.ts`, `atoms/Typography/typography-variants.ts`).
 - Keep **`*-variants.ts` server-safe** (no `"use client"`) unless a variant truly depends on client-only modules.
-- The **component file** imports variants and composes with **`classNames`** from `@/libs/utils/classNames/classNames`.
+- The **component file** imports variants and composes with **`classNames`** from `@/lib/utils/classNames/classNames`.
 - **`components/ui/<primitive>/`** may use **lowercase** main files (`button.tsx`); **atoms/molecules/organisms** use **PascalCase** (`Typography/Typography.tsx`).

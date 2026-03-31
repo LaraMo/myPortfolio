@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react";
 
 import { Icon } from "@/components/ui/icon";
 import { Typography } from "@/components/atoms/Typography";
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 export type SkillProps = {
   label: string;

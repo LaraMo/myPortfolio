@@ -1,6 +1,6 @@
 import NextImage, { type ImageProps as NextImageProps } from "next/image";
 
-import { classNames } from "@/libs/utils/classNames/classNames";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 import { imageVariants, type ImageVariantProps } from "./image-variants";
 

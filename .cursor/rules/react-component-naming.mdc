@@ -14,7 +14,7 @@ alwaysApply: true
 
 ## Style helpers (no abbreviations)
 
-- Use **`classNames`** from `@/libs/utils/classNames/classNames` for clsx + tailwind-merge. Do **not** use **`cn`**.
+- Use **`classNames`** from `@/lib/utils/classNames/classNames` for clsx + tailwind-merge. Do **not** use **`cn`**.
 - Use **`tailwindVariants`** as the binding for tailwind-variants: `import { tv as tailwindVariants } from "tailwind-variants"`. Do **not** call **`tv`** directly in source.
 
 ## Server vs client
