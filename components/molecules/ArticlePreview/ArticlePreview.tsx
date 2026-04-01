@@ -25,23 +25,29 @@ export type ArticlePreviewProps = {
   /** Stable id for the title heading (`aria-labelledby` on `<article>`). */
   titleId?: string;
   className?: string;
-  density?: "default" | "compact";
 };
 
-function formatPublishedAt(publishedAt: string | Date): {
-  iso: string;
-  display: string;
-} {
+const parsePublishedAt = (publishedAt: string | Date): Date | null => {
   const date =
-    typeof publishedAt === "string" ? new Date(publishedAt) : publishedAt;
-  const iso = Number.isNaN(date.getTime())
-    ? ""
-    : date.toISOString().slice(0, 10);
-  const display = Number.isNaN(date.getTime())
-    ? String(publishedAt)
-    : new Intl.DateTimeFormat(undefined, { dateStyle: "medium" }).format(date);
-  return { iso, display };
-}
+    typeof publishedAt === "string" ? new Date(publishedAt.trim()) : publishedAt;
+  return Number.isNaN(date.getTime()) ? null : date;
+};
+
+/** `Date` → `<time dateTime>` value (UTC calendar day `YYYY-MM-DD`). */
+const publishedAtToIsoDate = (date: Date): string =>
+  date.toISOString().slice(0, 10);
+
+/** `Date` → long label, e.g. `May 16 2026` (locale month names, commas stripped). */
+const formatPublishedAtLong = (date: Date): string =>
+  new Intl.DateTimeFormat(undefined, {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+    .format(date)
+    .replaceAll(",", "")
+    .replace(/\s+/g, " ")
+    .trim();
 
 export const ArticlePreview = ({
   title,
@@ -53,11 +59,13 @@ export const ArticlePreview = ({
   headingLevel = 2,
   titleId,
   className,
-  density = "default",
 }: ArticlePreviewProps) => {
   const headingTag = headingLevel === 3 ? "h3" : "h2";
-  const { iso, display } = formatPublishedAt(publishedAt);
-  const isCompact = density === "compact";
+  const publishedDate = parsePublishedAt(publishedAt);
+  const isoDate = publishedDate ? publishedAtToIsoDate(publishedDate) : "";
+  const publishedLabel = publishedDate
+    ? formatPublishedAtLong(publishedDate)
+    : "";
 
   const articleProps: ComponentPropsWithoutRef<"article"> = {
     className: classNames(
@@ -73,10 +81,8 @@ export const ArticlePreview = ({
     headingTag,
     {
       id: titleId,
-      className: classNames(
-        "font-heading font-medium leading-snug text-foreground",
-        isCompact ? "text-sm" : "text-base"
-      ),
+      className:
+        "font-heading text-sm font-medium leading-snug text-foreground",
     },
     title
   );
@@ -89,80 +95,45 @@ export const ArticlePreview = ({
           "flex h-full min-h-0 flex-1 flex-col gap-0 py-0 has-[>img:first-child]:pt-0"
         )}
       >
-        <div
-          className={classNames(
-            "relative w-full shrink-0 overflow-hidden rounded-t-xl",
-            isCompact ? "aspect-[5/3]" : "aspect-video"
-          )}
-        >
+        <div className="relative aspect-[5/3] w-full shrink-0 overflow-hidden rounded-t-xl">
           <Image
             src={image.src}
             alt={image.alt}
             fill
-            sizes={
-              isCompact
-                ? "(max-width: 768px) 85vw, 300px"
-                : "(max-width: 896px) 100vw, 896px"
-            }
+            sizes="(max-width: 768px) 85vw, 300px"
             className="object-cover"
             priority={false}
           />
         </div>
-        <CardHeader
-          className={classNames(
-            "shrink-0",
-            isCompact ? "gap-1 px-3 pt-3 pb-1" : "gap-2 px-4 pt-4 pb-2"
-          )}
-        >
+        <CardHeader className="shrink-0 gap-1 px-3 pt-3 pb-1">
           {titleHeading}
-          {iso ? (
+          {isoDate ? (
             <time
-              dateTime={iso}
-              className={classNames(
-                "text-muted-foreground",
-                isCompact ? "text-[0.65rem]" : "text-xs"
-              )}
+              dateTime={isoDate}
+              className="text-[0.65rem] text-muted-foreground"
             >
-              {display}
+              {publishedLabel}
             </time>
           ) : (
-            <span
-              className={classNames(
-                "text-muted-foreground",
-                isCompact ? "text-[0.65rem]" : "text-xs"
-              )}
-            >
-              {display}
+            <span className="text-[0.65rem] text-muted-foreground">
+              {String(publishedAt)}
             </span>
           )}
         </CardHeader>
-        <CardContent
-          className={classNames(
-            "flex min-h-0 flex-1 flex-col",
-            isCompact ? "px-3 pb-2 pt-0" : "px-4 pb-2 pt-0"
-          )}
-        >
-          <p
-            className={classNames(
-              "shrink-0 text-muted-foreground",
-              isCompact ? "line-clamp-2 text-xs" : "line-clamp-3 text-sm"
-            )}
-          >
+        <CardContent className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-0">
+          <p className="line-clamp-3 shrink-0 text-xs text-muted-foreground">
             {preview}
           </p>
           {tags.length > 0 ? (
             <ul
               role="list"
-              className={classNames(
-                "flex shrink-0 list-none flex-wrap gap-2 p-0",
-                isCompact ? "mt-2" : "mt-3"
-              )}
+              className="mt-2 flex shrink-0 list-none flex-wrap gap-2 p-0"
             >
               {tags.map((tag) => (
                 <li key={tag}>
                   <Badge
                     variant="secondary"
-                    className={isCompact ? "text-[0.65rem]" : undefined}
+                    className="text-[0.65rem]"
                   >
                     #{tag}
                   </Badge>
@@ -173,18 +144,10 @@ export const ArticlePreview = ({
           {/* Fills remaining card height so siblings in a row match the tallest article. */}
           <div className="min-h-0 flex-1" aria-hidden="true" />
         </CardContent>
-        <CardFooter
-          className={classNames(
-            "shrink-0 justify-start border-t-0 bg-transparent pt-0",
-            isCompact ? "px-3 pb-3" : "px-4 pb-4"
-          )}
-        >
+        <CardFooter className="shrink-0 justify-start border-t-0 bg-transparent px-3 pb-3 pt-0">
           <Link
             href={href}
-            className={classNames(
-              "inline-flex font-semibold text-sky-600 underline decoration-sky-600/80 underline-offset-4 outline-none transition-colors hover:text-sky-700 hover:decoration-sky-700 dark:text-sky-400 dark:decoration-sky-400/80 dark:hover:text-sky-300 dark:hover:decoration-sky-300 focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-              isCompact ? "text-xs" : "text-sm"
-            )}
+            className="inline-flex text-xs font-semibold text-sky-600 underline decoration-sky-600/80 underline-offset-4 outline-none transition-colors hover:text-sky-700 hover:decoration-sky-700 dark:text-sky-400 dark:decoration-sky-400/80 dark:hover:text-sky-300 dark:hover:decoration-sky-300 focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             aria-label={`Read more: ${title}`}
           >
             Read more

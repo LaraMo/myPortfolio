@@ -63,7 +63,6 @@ export const PortfolioAccordionSections = ({
                     href={article.href}
                     headingLevel={3}
                     titleId={`article-preview-${index}`}
-                    density="compact"
                     className="min-h-0 flex-1"
                   />
                 </li>

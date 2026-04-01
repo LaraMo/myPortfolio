@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
   "plugins": ["oxc", "unicorn", "typescript", "react", "nextjs", "vitest"],
+  "rules": {
+    "unicorn/no-array-for-each": "off"
+  },
   "ignorePatterns": [".next/**", "node_modules/**", "coverage/**"],
   "env": {
     "builtin": true,
