@@ -87,10 +87,7 @@ export const ArticlePreview = ({
             >
               {tags.map((tag) => (
                 <li key={tag}>
-                  <Badge
-                    variant="secondary"
-                    className="text-[0.65rem]"
-                  >
+                  <Badge variant="secondary" size="sm">
                     #{tag}
                   </Badge>
                 </li>

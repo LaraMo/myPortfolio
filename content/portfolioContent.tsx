@@ -37,7 +37,7 @@ export const portfolioContent = {
     title: "Little bit about me",
     emoji: "👋",
     body:
-      "I am a skilled and motivated software developer with 4+ years experience in developing innovative and efficient software solutions. I am proficient in React.js and Javascript with a focus on front-end development. I am interested in web/mobile development offering enthusiasm and understanding of various programming languages and frameworks.",
+      "I am a skilled and motivated software developer since 2019  with experience in developing innovative and efficient software solutions. I am proficient in React.js and Javascript with a focus on front-end development. I am interested in web/mobile development offering enthusiasm and understanding of various programming languages and frameworks.",
   },
   skills: {
     title: "A few skills",

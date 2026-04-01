@@ -4,7 +4,7 @@ import {
   AccordionCardGroup,
 } from "@/components/molecules/AccordionCard";
 import { ArticlePreview } from "@/components/molecules/ArticlePreview";
-import { Skill } from "@/components/molecules/Skill";
+import { Badge } from "@/components/ui/badge";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { buttonVariants } from "@/components/ui/button/buttonVariants";
 import { classNames } from "@/lib/utils/classNames/classNames";
@@ -31,7 +31,14 @@ export const PortfolioAccordionSections = ({
         <AccordionCard title={skills.title}>
           <div className="flex flex-wrap gap-2">
             {skills.items.map((item) => (
-              <Skill key={item.label} label={item.label} icon={item.icon} />
+              <Badge
+                key={item.label}
+                icon={item.icon}
+                variant="glass"
+                size="lg"
+              >
+                {item.label}
+              </Badge>
             ))}
           </div>
         </AccordionCard>
