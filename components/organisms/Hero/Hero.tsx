@@ -48,7 +48,7 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
         alt={imageAlt}
         width={220}
         height={220}
-        shape="circle"
+        shape="rectangle"
         glassRing
         className="mx-auto size-[200px] shrink-0 sm:mx-0 sm:size-[220px]"
       />
