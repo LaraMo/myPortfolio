@@ -1,12 +1,8 @@
-import Image from "next/image";
-
 import { Typography } from "@/components/atoms/Typography";
 import { classNames } from "@/lib/utils/classNames/classNames";
 import type { WorkExperience } from "@/types/content";
 
 import { experienceTimelineVariants } from "./experienceTimelineVariants";
-
-const LOGO_PX = 52;
 
 export type ExperienceTimelineProps = {
   entries: WorkExperience[];
@@ -38,14 +34,13 @@ export const ExperienceTimeline = ({
         <li key={entry.period} className={item()}>
           <div className={nodeCell()}>
             <div className={nodeShell()}>
-              <Image
-                src={entry.logoSrc}
-                alt={`${entry.company} logo`}
-                width={LOGO_PX}
-                height={LOGO_PX}
-                className="size-[2.875rem] object-contain p-0.5"
-                unoptimized
-              />
+              <span
+                className="select-none text-[1.75rem] leading-none"
+                aria-hidden
+                title={entry.company}
+              >
+                {entry.logoEmoji}
+              </span>
             </div>
           </div>
 

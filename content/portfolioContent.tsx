@@ -1,6 +1,7 @@
 import {
   Atom,
   Braces,
+  Brain,
   Code2,
   FileCode,
   Globe,
@@ -41,37 +42,41 @@ export const portfolioContent = {
   skills: {
     title: "A few skills",
     items: [
-      { label: "Javascript", icon: Braces },
-      { label: "SCSS/SASS/CSS", icon: Paintbrush },
-      { label: "React.js", icon: Atom },
+      { label: "React", icon: Atom },
+      { label: "Next", icon: Atom },
       { label: "Typescript", icon: FileCode },
-      { label: "Next.js", icon: Globe },
       { label: "Tailwind", icon: Paintbrush },
+      { label: "Javascript", icon: Braces },
       { label: "HTML", icon: Code2 },
+      { label: "SCSS/SASS/CSS", icon: Paintbrush },
       { label: "Node.js", icon: Code2 },
-      { label: "I18N", icon: Globe },
-      { label: "C#", icon: FileCode },
-      { label: "AWS", icon: Globe },
-      { label: "Cypress", icon: Smartphone },
-      { label: "Java", icon: FileCode },
-      { label: "Flutter", icon: Smartphone },
-      { label: "Android studio", icon: Smartphone },
-      { label: "MySQL", icon: Code2 },
-      { label: "SQL", icon: Code2 },
       { label: "Git", icon: Braces },
-      { label: "Verdaccio", icon: Globe },
+      { label: "AWS", icon: Globe },
+      { label: "Android studio", icon: Smartphone },
+      { label: "SQL", icon: Code2 },
+      { label: "C#", icon: FileCode },
+      { label: "Java", icon: FileCode },
+      {label: "Agile", icon: Brain}
     ] satisfies Skill[],
   },
   work: {
     title: "Relevant work experience",
     entries: [
       {
-        period: "March 2022 - Present",
+        period: "October 2023 - Present",
+        title: "Software Developer",
+        company: "Plusgrade",
+        description:
+          "TBD",
+        logoEmoji: "💺",
+      },
+      {
+        period: "March 2022 - October 2023",
         title: "IT Developer",
         company: "Ubisoft",
         description:
           "Code new and existing UI components and suggest improvements",
-        logoSrc: "/ubisoft.svg",
+        logoEmoji: "🎮",
       },
       {
         period: "September 2020 - March 2022",
@@ -79,7 +84,7 @@ export const portfolioContent = {
         company: "Bombardier",
         description:
           "Developing a mobile app to track maintenance status of aircrafts built using ReactNative.js & Redux.js. In charge of interviewing and onboarding new dev interns",
-        logoSrc: "/bombardier.svg",
+        logoEmoji: "✈️",
       },
       {
         period: "June 2019 - September 2020",
@@ -87,7 +92,7 @@ export const portfolioContent = {
         company: "Neptronic",
         description:
           "Implemented new web pages for the in-house business tools using React.js, C#, ASP.NET, and Microsoft SQL Server",
-        logoSrc: "/neptronic.svg",
+        logoEmoji: "🌡️",
       },
     ] satisfies WorkExperience[],
   },

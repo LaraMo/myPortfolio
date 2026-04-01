@@ -61,7 +61,6 @@ export const ArticlePreview = ({
             fill
             sizes="(max-width: 768px) 85vw, 300px"
             className="object-cover"
-            priority={false}
           />
         </div>
         <CardHeader className="shrink-0 gap-1 px-3 pt-3 pb-1">

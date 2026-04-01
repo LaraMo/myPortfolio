@@ -3,6 +3,6 @@ export type WorkExperience = {
   title: string;
   company: string;
   description: string;
-  /** Public path to company logo (asset under `/public/`). */
-  logoSrc: string;
+  /** Visual marker for the sector (emoji), avoids maintaining brand SVGs. */
+  logoEmoji: string;
 };
