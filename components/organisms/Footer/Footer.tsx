@@ -21,15 +21,10 @@ export const Footer = ({ contact, note, copyrightName }: FooterProps) => {
     <footer className="mt-auto border-t border-[var(--glass-border)] bg-[var(--glass-surface)]/70 py-10 backdrop-blur-xl">
       <div className="mx-auto flex max-w-4xl flex-col gap-8 px-6 text-center sm:text-left">
         <section aria-labelledby="footer-contact-heading" className="space-y-4">
-          <Typography
-            id="footer-contact-heading"
-            variant="h3"
-            as="h2"
-            className="text-foreground"
-          >
+          <Typography id="footer-contact-heading" variant="h3" as="h2">
             {contact.title}
           </Typography>
-          <Typography variant="body" as="p" className="text-muted-foreground">
+          <Typography variant="body" as="p" color="muted">
             {contact.body}
           </Typography>
           <div>
@@ -45,10 +40,10 @@ export const Footer = ({ contact, note, copyrightName }: FooterProps) => {
           </div>
         </section>
         <div className="flex flex-col gap-3 border-t border-[var(--glass-border)] pt-8">
-          <Typography variant="small" className="text-muted-foreground">
+          <Typography variant="small" color="muted">
             {note}
           </Typography>
-          <Typography variant="caption" className="text-muted-foreground">
+          <Typography variant="caption" color="muted">
             © {year} {copyrightName}
           </Typography>
         </div>

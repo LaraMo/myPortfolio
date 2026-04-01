@@ -28,7 +28,11 @@ export const SectionTitle = ({ title, mode = "standalone" }: SectionTitleProps) 
 
   if (initial.length === 0) {
     return (
-      <Typography variant="h3" as="span">
+      <Typography
+        variant="h2"
+        as={mode === "inTrigger" ? "span" : "h2"}
+        className="font-heading !text-2xl !font-normal !leading-snug !tracking-normal sm:!text-2xl group-data-[size=sm]/card:!text-xl"
+      >
         {title}
       </Typography>
     );
@@ -48,9 +52,9 @@ export const SectionTitle = ({ title, mode = "standalone" }: SectionTitleProps) 
         </span>
         {rest.length > 0 ? (
           <Typography
-            variant="h3"
+            variant="h2"
             as="span"
-            className="min-w-0 pb-0 font-heading text-base font-normal leading-snug group-data-[size=sm]/card:text-sm"
+            className="min-w-0 pb-0 font-heading !text-2xl !font-normal !leading-snug !tracking-normal sm:!text-2xl group-data-[size=sm]/card:!text-xl"
             aria-hidden
           >
             {rest}
@@ -75,7 +79,12 @@ export const SectionTitle = ({ title, mode = "standalone" }: SectionTitleProps) 
         />
       </span>
       {rest.length > 0 ? (
-        <Typography variant="h3" as="span" className="pb-1" aria-hidden>
+        <Typography
+          variant="h2"
+          as="span"
+          className="pb-1 font-heading !text-2xl !font-normal !leading-snug !tracking-normal sm:!text-2xl"
+          aria-hidden
+        >
           {rest}
         </Typography>
       ) : null}
@@ -86,7 +95,7 @@ export const SectionTitle = ({ title, mode = "standalone" }: SectionTitleProps) 
     <Wrapper
       className="flex flex-wrap items-end gap-x-2 gap-y-1"
       role="heading"
-      aria-level={3}
+      aria-level={2}
       aria-label={title.trim()}
     >
       {content}

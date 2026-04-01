@@ -65,7 +65,8 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
         </h1>
         <Typography
           variant="bodyLarge"
-          className="mt-6 text-muted-foreground"
+          color="muted"
+          className="mt-6"
           as="p"
         >
           <span className="text-foreground">I am a </span>

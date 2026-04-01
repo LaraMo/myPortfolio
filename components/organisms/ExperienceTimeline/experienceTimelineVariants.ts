@@ -1,3 +1,4 @@
+import { captionMetaClassName } from "@/components/atoms/Typography/typographyMeta";
 import { tv as tailwindVariants } from "tailwind-variants";
 
 export const experienceTimelineVariants = tailwindVariants({
@@ -14,12 +15,8 @@ export const experienceTimelineVariants = tailwindVariants({
       "dark:bg-card/95 dark:ring-white/10",
     ].join(" "),
     content: "col-start-2 row-start-1 min-w-0 max-w-2xl",
-    roleRow: "flex flex-wrap items-baseline gap-x-1.5",
-    roleTitle:
-      "text-lg font-semibold tracking-tight text-foreground sm:text-xl",
-    companyInline:
-      "text-sm font-semibold text-black sm:text-base dark:text-white",
-    period: "mt-2 text-xs font-medium uppercase tracking-wide text-muted-foreground",
-    description: "mt-2 text-muted-foreground",
+    headline: "flex flex-wrap items-baseline gap-x-1.5",
+    period: captionMetaClassName,
+    description: "mt-2",
   },
 });

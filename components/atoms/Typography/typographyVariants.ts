@@ -14,18 +14,24 @@ export const typographyVariants = tailwindVariants({
       bodyLarge: "text-lg leading-relaxed",
       body: "text-base leading-relaxed",
       small: "text-sm leading-normal",
-      caption: "text-xs text-muted-foreground",
-      overline:
-        "text-xs font-medium uppercase tracking-widest text-muted-foreground",
+      caption: "text-xs leading-normal",
+      overline: "text-xs font-medium uppercase tracking-widest leading-normal",
     },
     gradient: {
       false: "",
       true: "bg-gradient-to-r from-fuchsia-600 via-purple-600 to-violet-700 bg-clip-text text-transparent dark:from-fuchsia-400 dark:via-purple-400 dark:to-violet-400",
     },
+    color: {
+      default: "",
+      muted: "text-muted-foreground",
+      primary: "text-primary",
+      secondary: "text-secondary-foreground",
+    },
   },
   defaultVariants: {
     variant: "body",
     gradient: false,
+    color: "default",
   },
 });
 

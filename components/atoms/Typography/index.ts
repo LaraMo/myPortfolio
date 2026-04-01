@@ -3,3 +3,4 @@ export {
   typographyVariants,
   type TypographyVariantProps,
 } from "./typographyVariants";
+export { captionMetaClassName } from "./typographyMeta";

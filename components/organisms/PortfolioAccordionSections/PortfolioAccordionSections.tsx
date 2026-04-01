@@ -23,7 +23,7 @@ export const PortfolioAccordionSections = ({
     <div className="mx-auto max-w-4xl px-6 pb-20">
       <AccordionCardGroup>
         <AccordionCard title={intro.title}>
-          <Typography variant="bodyLarge" as="p">
+          <Typography variant="body" as="p">
             {intro.emoji} {intro.body}
           </Typography>
         </AccordionCard>

@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 
+import {
+  Typography,
+  captionMetaClassName,
+} from "@/components/atoms/Typography";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -64,22 +68,33 @@ export const ArticlePreview = ({
           />
         </div>
         <CardHeader className="shrink-0 gap-1 px-3 pt-3 pb-1">
-          <h2
+          <Typography
+            as="h2"
+            variant="h2"
             id={titleId}
-            className="font-heading text-sm font-medium leading-snug text-foreground"
+            className="font-heading !text-base !font-medium !leading-snug !tracking-normal sm:!text-base"
           >
             {title}
-          </h2>
+          </Typography>
           {publishedAt ? (
-            <time className="text-[0.65rem] text-muted-foreground">
+            <Typography
+              as="time"
+              variant="caption"
+              color="muted"
+              className={captionMetaClassName}
+            >
               {publishedAt}
-            </time>
+            </Typography>
           ) : null}
         </CardHeader>
         <CardContent className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-0">
-          <p className="line-clamp-3 shrink-0 text-xs text-muted-foreground">
+          <Typography
+            as="p"
+            variant="small"
+            className="line-clamp-3 shrink-0"
+          >
             {preview}
-          </p>
+          </Typography>
           {tags.length > 0 ? (
             <ul
               role="list"

@@ -19,7 +19,7 @@ const defaultElement: Record<
   bodyLarge: "p",
   body: "p",
   small: "p",
-  caption: "span",
+  caption: "p",
   overline: "p",
 };
 
@@ -27,12 +27,13 @@ export type TypographyProps = {
   as?: ElementType;
   className?: string;
 } & VariantProps<typeof typographyVariants> &
-  Omit<ComponentPropsWithoutRef<"p">, "className">;
+  Omit<ComponentPropsWithoutRef<"p">, "className" | "color">;
 
 export const Typography = ({
   as,
   variant = "body",
   gradient = false,
+  color = "default",
   className,
   ...props
 }: TypographyProps) => {
@@ -41,8 +42,8 @@ export const Typography = ({
   return (
     <Component
       className={classNames(
-        typographyVariants({ variant, gradient }),
-        className
+        typographyVariants({ variant, gradient, color }),
+        className,
       )}
       {...props}
     />
