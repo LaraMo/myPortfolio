@@ -1,6 +1,6 @@
 export type Article = {
   title: string;
-  /** ISO 8601 date string for `<time dateTime>` and display. */
+  /** English display date from the feed (e.g. `May 16 2026`). */
   publishedAt: string;
   preview: string;
   imageSrc: string;

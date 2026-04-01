@@ -143,8 +143,6 @@ export const AccordionCard = ({
   );
 };
 
-AccordionCard.displayName = "AccordionCard";
-
 export type AccordionCardGroupProps = {
   children: ReactNode;
   className?: string;

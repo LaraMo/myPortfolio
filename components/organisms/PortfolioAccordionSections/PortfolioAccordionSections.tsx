@@ -61,7 +61,6 @@ export const PortfolioAccordionSections = ({
                     publishedAt={article.publishedAt}
                     tags={article.tags}
                     href={article.href}
-                    headingLevel={3}
                     titleId={`article-preview-${index}`}
                     className="min-h-0 flex-1"
                   />
@@ -86,4 +85,3 @@ export const PortfolioAccordionSections = ({
   );
 };
 
-PortfolioAccordionSections.displayName = "PortfolioAccordionSections";

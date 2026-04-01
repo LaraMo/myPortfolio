@@ -28,16 +28,25 @@ const firstHttpsImageSrc = (html: string | undefined): string | null => {
   return match?.[1] ?? null;
 };
 
-const publishedAtFromPubDate = (pubDate: string | undefined): string => {
+/** RSS `pubDate` → English label, e.g. `May 16 2026`; `""` if missing or invalid. */
+const formatPublishedDate = (pubDate: string | undefined): string => {
   const raw = pubDate?.trim();
   if (!raw) {
     return "";
   }
-  const d = new Date(raw);
-  if (Number.isNaN(d.getTime())) {
+  const date = new Date(raw);
+  if (Number.isNaN(date.getTime())) {
     return "";
   }
-  return d.toISOString().slice(0, 10);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
+    .format(date)
+    .replaceAll(",", "")
+    .replace(/\s+/g, " ")
+    .trim();
 };
 
 const itemTags = (categories: string[] | undefined): string[] => {
@@ -78,7 +87,7 @@ const mapItemToArticle = (item: RssItem): Article | null => {
 
   return {
     title,
-    publishedAt: publishedAtFromPubDate(item.pubDate),
+    publishedAt: formatPublishedDate(item.pubDate),
     preview,
     imageSrc,
     imageAlt,

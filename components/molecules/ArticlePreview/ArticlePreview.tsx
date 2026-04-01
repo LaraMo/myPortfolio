@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { createElement, type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -18,36 +18,13 @@ export type ArticlePreviewProps = {
   title: string;
   preview: string;
   image: { src: string; alt: string };
-  publishedAt: string | Date;
+  publishedAt: string;
   tags: readonly string[];
   href: string;
-  headingLevel?: 2 | 3;
   /** Stable id for the title heading (`aria-labelledby` on `<article>`). */
   titleId?: string;
   className?: string;
 };
-
-const parsePublishedAt = (publishedAt: string | Date): Date | null => {
-  const date =
-    typeof publishedAt === "string" ? new Date(publishedAt.trim()) : publishedAt;
-  return Number.isNaN(date.getTime()) ? null : date;
-};
-
-/** `Date` → `<time dateTime>` value (UTC calendar day `YYYY-MM-DD`). */
-const publishedAtToIsoDate = (date: Date): string =>
-  date.toISOString().slice(0, 10);
-
-/** `Date` → long label, e.g. `May 16 2026` (locale month names, commas stripped). */
-const formatPublishedAtLong = (date: Date): string =>
-  new Intl.DateTimeFormat(undefined, {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
-    .format(date)
-    .replaceAll(",", "")
-    .replace(/\s+/g, " ")
-    .trim();
 
 export const ArticlePreview = ({
   title,
@@ -56,17 +33,9 @@ export const ArticlePreview = ({
   publishedAt,
   tags,
   href,
-  headingLevel = 2,
   titleId,
   className,
 }: ArticlePreviewProps) => {
-  const headingTag = headingLevel === 3 ? "h3" : "h2";
-  const publishedDate = parsePublishedAt(publishedAt);
-  const isoDate = publishedDate ? publishedAtToIsoDate(publishedDate) : "";
-  const publishedLabel = publishedDate
-    ? formatPublishedAtLong(publishedDate)
-    : "";
-
   const articleProps: ComponentPropsWithoutRef<"article"> = {
     className: classNames(
       "@container/article-preview flex h-full min-h-0 flex-col",
@@ -76,16 +45,6 @@ export const ArticlePreview = ({
   if (titleId) {
     articleProps["aria-labelledby"] = titleId;
   }
-
-  const titleHeading = createElement(
-    headingTag,
-    {
-      id: titleId,
-      className:
-        "font-heading text-sm font-medium leading-snug text-foreground",
-    },
-    title
-  );
 
   return (
     <article {...articleProps}>
@@ -106,19 +65,17 @@ export const ArticlePreview = ({
           />
         </div>
         <CardHeader className="shrink-0 gap-1 px-3 pt-3 pb-1">
-          {titleHeading}
-          {isoDate ? (
-            <time
-              dateTime={isoDate}
-              className="text-[0.65rem] text-muted-foreground"
-            >
-              {publishedLabel}
+          <h2
+            id={titleId}
+            className="font-heading text-sm font-medium leading-snug text-foreground"
+          >
+            {title}
+          </h2>
+          {publishedAt ? (
+            <time className="text-[0.65rem] text-muted-foreground">
+              {publishedAt}
             </time>
-          ) : (
-            <span className="text-[0.65rem] text-muted-foreground">
-              {String(publishedAt)}
-            </span>
-          )}
+          ) : null}
         </CardHeader>
         <CardContent className="flex min-h-0 flex-1 flex-col px-3 pb-2 pt-0">
           <p className="line-clamp-3 shrink-0 text-xs text-muted-foreground">
@@ -158,4 +115,3 @@ export const ArticlePreview = ({
   );
 };
 
-ArticlePreview.displayName = "ArticlePreview";
