@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 import { BrandLmMark } from "@/components/atoms/BrandLmMark";
 import { Button } from "@/components/atoms/Button";
+import { Link } from "@/components/atoms/Link";
 import { buttonVariants } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { classNames } from "@/lib/utils/classNames/classNames";
@@ -31,7 +32,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
       <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <BrandLmMark />
         <div className="flex flex-wrap items-center justify-end gap-2 sm:ml-auto">
-          <a
+          <Link
             href={cvUrl}
             download
             className={classNames(
@@ -41,7 +42,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
           >
             <Icon icon={Download} size="sm" className="mr-1" />
             Résumé
-          </a>
+          </Link>
           <Button
             variant="outline-glass"
             size="icon-sm"

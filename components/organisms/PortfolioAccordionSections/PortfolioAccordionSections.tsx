@@ -1,3 +1,4 @@
+import { Link } from "@/components/atoms/Link";
 import { Typography } from "@/components/atoms/Typography";
 import {
   AccordionCard,
@@ -74,7 +75,7 @@ export const PortfolioAccordionSections = ({
                 </li>
               ))}
             </ul>
-            <a
+            <Link
               href={articles.catalogUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -84,7 +85,7 @@ export const PortfolioAccordionSections = ({
               )}
             >
               {articles.catalogButtonLabel}
-            </a>
+            </Link>
           </div>
         </AccordionCard>
       </AccordionCardGroup>

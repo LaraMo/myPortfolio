@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
 
+import { Link } from "@/components/atoms/Link";
 import {
   Typography,
   captionMetaClassName,

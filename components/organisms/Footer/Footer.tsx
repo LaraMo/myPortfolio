@@ -1,3 +1,4 @@
+import { Link } from "@/components/atoms/Link";
 import { Typography } from "@/components/atoms/Typography";
 import { buttonVariants } from "@/components/ui/button";
 import { classNames } from "@/lib/utils/classNames/classNames";
@@ -28,7 +29,7 @@ export const Footer = ({ contact, note, copyrightName }: FooterProps) => {
             {contact.body}
           </Typography>
           <div>
-            <a
+            <Link
               href={contact.buttonHref}
               className={classNames(
                 buttonVariants({ variant: "glass", size: "sm" }),
@@ -36,7 +37,7 @@ export const Footer = ({ contact, note, copyrightName }: FooterProps) => {
               )}
             >
               {contact.buttonLabel}
-            </a>
+            </Link>
           </div>
         </section>
         <div className="flex flex-col gap-3 border-t border-[var(--glass-border)] pt-8">
