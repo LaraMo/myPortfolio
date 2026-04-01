@@ -15,7 +15,7 @@ import {
   type ReactNode,
 } from "react";
 
-import { SectionTitle } from "@/components/molecules/Card/SectionTitle";
+import { SectionTitle } from "@/components/molecules/SectionTitle";
 import {
   Card as UiCard,
   CardContent,
@@ -122,7 +122,7 @@ export const AccordionCard = ({
                   data-slot="card-title"
                   className="font-heading min-w-0 flex-1 text-base font-normal leading-snug group-data-[size=sm]/card:text-sm"
                 >
-                  <SectionTitle title={title} mode="inTrigger" />
+                  <SectionTitle title={title} />
                 </span>
                 <ChevronDown className={chevron()} aria-hidden />
               </span>
