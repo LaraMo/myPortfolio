@@ -9,7 +9,7 @@ alwaysApply: true
 
 - Each **importable component module** lives in its **own directory** under the correct layer (`components/ui`, `atoms`, `molecules`, `organisms`).
 - Add **`index.ts`** that re-exports the **public API** only (components, types, and `*Variants` helpers when applicable).
-- If there is **no** variant API, **`index.ts` exports only** what consumers need. Do **not** add an empty `*-variants.ts` file.
+- If there is **no** variant API, **`index.ts` exports only** what consumers need. Do **not** add an empty `*Variants.ts` file.
 - Prefer imports like **`@/components/ui/button`**, **`@/components/atoms/Typography`**, **`@/components/atoms/Image`** (barrel paths), not deep paths into `*.tsx` files.
 
 ## `components/ui/<primitive>/`
@@ -18,7 +18,7 @@ Reserve **`components/ui/`** for **shadcn (registry)–generated** components an
 
 - **`index.ts`** — barrel: e.g. `Button`, `buttonVariants`, related types.
 - **`<primitive>.tsx`** — implementation; **lowercase** filename (`button.tsx`, `card.tsx`) for shadcn alignment.
-- **`<primitive>-variants.ts`** — optional; **required** when the module exposes a **`tailwindVariants`** API (`variant` / `size` / etc.). Keep **server-safe** (no `"use client"`).
+- **`<primitive>Variants.ts`** (camelCase, e.g. `buttonVariants.ts`) — optional; **required** when the module exposes a **`tailwindVariants`** API (`variant` / `size` / etc.). Keep **server-safe** (no `"use client"`).
 
 After **`shadcn` CLI** adds a **flat** file under `components/ui/`, **normalize** into `components/ui/<name>/` with `index.ts`. Avoid leaving both a flat `<name>.tsx` and a `<name>/` folder (resolution conflicts). Do **not** blindly re-run `shadcn add` for a primitive you already maintain as a folder.
 
@@ -26,7 +26,7 @@ After **`shadcn` CLI** adds a **flat** file under `components/ui/`, **normalize*
 
 - Same **folder + `index.ts`** pattern.
 - Main file: **`<Name>/<Name>.tsx`** — **PascalCase** filename matching the default export (`Typography/Typography.tsx`, `Header/Header.tsx`).
-- **`tailwindVariants`** live in **`*-variants.ts`** in that folder (e.g. `typography-variants.ts`), not inlined in the component file.
+- **`tailwindVariants`** live in **`*Variants.ts`** in that folder (e.g. `typographyVariants.ts`), not inlined in the component file.
 
 ## Variants detail
 

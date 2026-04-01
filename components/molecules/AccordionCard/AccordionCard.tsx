@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/card";
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-import { accordionCardVariants } from "./accordion-card-variants";
+import { accordionCardVariants } from "./accordionCardVariants";
 
 const MD_DOWN = "(max-width: 767px)";
 

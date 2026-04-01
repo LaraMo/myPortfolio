@@ -1,6 +1,6 @@
 import RSSParser from "rss-parser";
 
-import type { ArticleEntry } from "@/content/portfolio-content";
+import type { Article } from "@/types/content";
 
 const MEDIUM_FEED_URL = "https://medium.com/feed/@laramo" as const;
 
@@ -74,7 +74,7 @@ type RssItem = {
   enclosure?: { url?: string; type?: string };
 };
 
-const mapItemToArticle = (item: RssItem): ArticleEntry | null => {
+const mapItemToArticle = (item: RssItem): Article | null => {
   const title = item.title?.trim();
   const href = item.link?.trim();
   if (!title || !href) {
@@ -113,7 +113,7 @@ const mapItemToArticle = (item: RssItem): ArticleEntry | null => {
   };
 };
 
-export const getMediumArticleEntries = async (): Promise<ArticleEntry[]> => {
+export const getMediumArticleEntries = async (): Promise<Article[]> => {
   try {
     const response = await fetch(MEDIUM_FEED_URL, {
       next: { revalidate: SEVEN_DAYS_SECONDS },
@@ -125,7 +125,7 @@ export const getMediumArticleEntries = async (): Promise<ArticleEntry[]> => {
 
     const xml = await response.text();
     const feed = await parser.parseString(xml);
-    const entries: ArticleEntry[] = [];
+    const entries: Article[] = [];
 
     for (const item of feed.items) {
       const article = mapItemToArticle(item);

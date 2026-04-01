@@ -1,6 +1,6 @@
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-import { brandLmMarkVariants } from "./brand-lm-mark-variants";
+import { brandLmMarkVariants } from "./brandLmMarkVariants";
 
 export type BrandLmMarkProps = {
   className?: string;

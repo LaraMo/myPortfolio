@@ -6,30 +6,9 @@ import {
   Globe,
   Paintbrush,
   Smartphone,
-  type LucideIcon,
 } from "lucide-react";
 
-export type SkillItem = { label: string; icon: LucideIcon };
-
-export type WorkEntry = {
-  period: string;
-  title: string;
-  company: string;
-  description: string;
-  /** Public path to company logo (asset under `/public/`). */
-  logoSrc: string;
-};
-
-export type ArticleEntry = {
-  title: string;
-  /** ISO 8601 date string for `<time dateTime>` and display. */
-  publishedAt: string;
-  preview: string;
-  imageSrc: string;
-  imageAlt: string;
-  href: string;
-  tags: string[];
-};
+import type { Article, Skill, WorkExperience } from "@/types/content";
 
 /** Static accordion chrome; article rows come from `getMediumArticleEntries`. */
 export const articlesSectionMeta = {
@@ -81,7 +60,7 @@ export const portfolioContent = {
       { label: "SQL", icon: Code2 },
       { label: "Git", icon: Braces },
       { label: "Verdaccio", icon: Globe },
-    ] satisfies SkillItem[],
+    ] satisfies Skill[],
   },
   work: {
     title: "Relevant work experience",
@@ -110,7 +89,7 @@ export const portfolioContent = {
           "Implemented new web pages for the in-house business tools using React.js, C#, ASP.NET, and Microsoft SQL Server",
         logoSrc: "/neptronic.svg",
       },
-    ] satisfies WorkEntry[],
+    ] satisfies WorkExperience[],
   },
   articles: articlesSectionMeta,
   contact: {
@@ -135,6 +114,6 @@ export type PortfolioMainSections = Pick<
     title: string;
     catalogUrl: string;
     catalogButtonLabel: string;
-    entries: ArticleEntry[];
+    entries: Article[];
   };
 };

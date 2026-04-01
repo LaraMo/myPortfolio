@@ -2,14 +2,14 @@ import Image from "next/image";
 
 import { Typography } from "@/components/atoms/Typography";
 import { classNames } from "@/lib/utils/classNames/classNames";
-import type { WorkEntry } from "@/content/portfolio-content";
+import type { WorkExperience } from "@/types/content";
 
-import { experienceTimelineVariants } from "./experience-timeline-variants";
+import { experienceTimelineVariants } from "./experienceTimelineVariants";
 
 const LOGO_PX = 52;
 
 export type ExperienceTimelineProps = {
-  entries: WorkEntry[];
+  entries: WorkExperience[];
   className?: string;
 };
 

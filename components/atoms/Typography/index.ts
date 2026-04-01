@@ -2,4 +2,4 @@ export { Typography, type TypographyProps } from "./Typography";
 export {
   typographyVariants,
   type TypographyVariantProps,
-} from "./typography-variants";
+} from "./typographyVariants";

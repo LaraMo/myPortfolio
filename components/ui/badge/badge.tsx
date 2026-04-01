@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-import { badgeVariants, type BadgeVariantProps } from "./badge-variants";
+import { badgeVariants, type BadgeVariantProps } from "./badgeVariants";
 
 export type BadgeProps = ComponentPropsWithoutRef<"span"> & BadgeVariantProps;
 

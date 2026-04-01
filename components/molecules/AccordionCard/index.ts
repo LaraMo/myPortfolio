@@ -4,4 +4,4 @@ export {
   type AccordionCardProps,
   type AccordionCardGroupProps,
 } from "./AccordionCard";
-export { accordionCardVariants } from "./accordion-card-variants";
+export { accordionCardVariants } from "./accordionCardVariants";

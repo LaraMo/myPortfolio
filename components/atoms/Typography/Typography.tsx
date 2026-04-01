@@ -3,7 +3,7 @@ import type { VariantProps } from "tailwind-variants";
 
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-import { typographyVariants } from "./typography-variants";
+import { typographyVariants } from "./typographyVariants";
 
 const defaultElement: Record<
   NonNullable<VariantProps<typeof typographyVariants>["variant"]>,

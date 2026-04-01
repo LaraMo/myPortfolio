@@ -1,0 +1,17 @@
+---
+description: camelCase filenames for types, content, lib, and component variant modules
+alwaysApply: true
+---
+
+# TypeScript module filenames
+
+## `types/`, `content/`, `lib/`
+
+- Use **camelCase** for `.ts` / `.tsx` **module files** (e.g. `workExperience.ts`, `mediumArticles.ts`, `portfolioContent.tsx`).
+- Do **not** use kebab-case (e.g. avoid `work-experience.ts`).
+- **Exception — `lib/`:** a file that **default-exports one React component** may use **PascalCase** (e.g. `ThemeProvider.tsx`). Plain utilities stay **camelCase** (e.g. `classNames.ts`).
+
+## `components/`
+
+- Follow **`component-module-layout.mdc`**: **PascalCase** main component files in atoms/molecules/organisms, **lowercase** `*.tsx` under `components/ui/<primitive>/`, and **camelCase** **`*Variants.ts`** for `tailwindVariants` (e.g. `typographyVariants.ts`, not `typography-variants.ts`).
+- **Barrels:** `index.ts` stays lowercase (standard entry filename).
