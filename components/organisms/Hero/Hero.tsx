@@ -1,40 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
 import type { ImageProps } from "next/image";
 
+import { useDisplayHeroSubtitles } from "./hooks/useDisplayHeroSubtitles";
+import { splitDisplayName } from "./utils/splitDisplayName";
+
 export type HeroProps = {
   image: ImageProps["src"];
+  imageAlt: string;
   title: string;
   subtitles: string[];
-  imageAlt: string;
-};
-
-const splitDisplayName = (full: string): [string, string] => {
-  const parts = full.trim().split(/\s+/);
-  if (parts.length < 2) {
-    return [full, ""];
-  }
-  const last = parts.pop() ?? "";
-  return [parts.join(" "), last];
 };
 
 export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
-  const [index, setIndex] = useState(0);
+  const index = useDisplayHeroSubtitles(subtitles);
   const [line1, line2] = splitDisplayName(title);
-
-  useEffect(() => {
-    if (subtitles.length <= 1) {
-      return;
-    }
-    const id = window.setInterval(() => {
-      setIndex((value) => (value + 1) % subtitles.length);
-    }, 2000);
-    return () => window.clearInterval(id);
-  }, [subtitles.length]);
 
   const subtitle = subtitles[index] ?? "";
 

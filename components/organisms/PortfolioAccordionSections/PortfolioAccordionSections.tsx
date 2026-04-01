@@ -44,7 +44,7 @@ export const PortfolioAccordionSections = ({
         </AccordionCard>
 
         <AccordionCard title={work.title}>
-          <ExperienceTimeline entries={[...work.entries]} />
+          <ExperienceTimeline entries={work.entries} />
         </AccordionCard>
 
         <AccordionCard title={articles.title}>
