@@ -18,7 +18,7 @@ import { classNames } from "@/lib/utils/classNames/classNames";
 const glassCard =
   "border-[var(--glass-border)] bg-[var(--glass-surface)] shadow-lg backdrop-blur-xl";
 
-export type ArticlePreviewProps = {
+export type ArticleProps = {
   title: string;
   preview: string;
   image: { src: string; alt: string };
@@ -30,7 +30,7 @@ export type ArticlePreviewProps = {
   className?: string;
 };
 
-export const ArticlePreview = ({
+export const Article = ({
   title,
   preview,
   image,
@@ -39,10 +39,10 @@ export const ArticlePreview = ({
   href,
   titleId,
   className,
-}: ArticlePreviewProps) => {
+}: ArticleProps) => {
   const articleProps: ComponentPropsWithoutRef<"article"> = {
     className: classNames(
-      "@container/article-preview flex h-full min-h-0 flex-col",
+      "@container/article flex h-full min-h-0 flex-col",
       className
     ),
   };
@@ -125,4 +125,3 @@ export const ArticlePreview = ({
     </article>
   );
 };
-

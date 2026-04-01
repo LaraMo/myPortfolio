@@ -3,7 +3,7 @@ import {
   AccordionCard,
   AccordionCardGroup,
 } from "@/components/molecules/AccordionCard";
-import { ArticlePreview } from "@/components/molecules/ArticlePreview";
+import { Article } from "@/components/molecules/Article";
 import { Badge } from "@/components/ui/badge";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
 import { buttonVariants } from "@/components/ui/button/buttonVariants";
@@ -58,7 +58,7 @@ export const PortfolioAccordionSections = ({
                   key={article.href}
                   className="flex min-h-0 min-w-0 flex-col"
                 >
-                  <ArticlePreview
+                  <Article
                     title={article.title}
                     preview={article.preview}
                     image={{
@@ -68,7 +68,7 @@ export const PortfolioAccordionSections = ({
                     publishedAt={article.publishedAt}
                     tags={article.tags}
                     href={article.href}
-                    titleId={`article-preview-${index}`}
+                    titleId={`article-${index}`}
                     className="min-h-0 flex-1"
                   />
                 </li>
