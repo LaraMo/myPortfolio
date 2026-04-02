@@ -3,9 +3,22 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { useDisplayHeroSubtitles } from "../useDisplayHeroSubtitles";
 
+const mockMatchMedia = (matches: boolean) =>
+  vi.fn().mockImplementation((query: string) => ({
+    matches,
+    media: query,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+  }));
+
 describe("useDisplayHeroSubtitles", () => {
   beforeEach(() => {
     vi.useFakeTimers();
+    window.matchMedia = mockMatchMedia(false);
   });
 
   afterEach(() => {
@@ -40,6 +53,19 @@ describe("useDisplayHeroSubtitles", () => {
 
     act(() => {
       vi.advanceTimersByTime(2000);
+    });
+    expect(result.current).toBe(0);
+  });
+
+  it("does not advance when prefers-reduced-motion is reduce", () => {
+    window.matchMedia = mockMatchMedia(true);
+    const subtitles = ["a", "b"];
+    const { result } = renderHook(() => useDisplayHeroSubtitles(subtitles, 1000));
+
+    expect(result.current).toBe(0);
+
+    act(() => {
+      vi.advanceTimersByTime(5000);
     });
     expect(result.current).toBe(0);
   });

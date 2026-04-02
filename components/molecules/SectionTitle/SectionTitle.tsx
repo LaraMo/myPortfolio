@@ -9,7 +9,7 @@ export const SectionTitle = ({ title }: SectionTitleProps) => {
   const { initial, rest } = splitTitleInitial(title);
 
   return (
-    <span className="flex min-w-0 flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
+    <span className="flex min-w-0 flex-1 flex-row flex-wrap items-baseline gap-x-1 gap-y-0.5">
       <Typography variant="sectionTitleCap" aria-hidden>
         {initial}
       </Typography>

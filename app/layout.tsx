@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
+
 import { ThemeProvider } from "@/lib/utils/theme/ThemeProvider";
 import { fontVariableClassNames } from "./fonts";
 
 import "./globals.css";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Liora Lara Mezirovsky",
+    template: "%s | Lara Mo",
+  },
+  description: `Portfolio`,
+};
 
 export default function RootLayout({
   children,

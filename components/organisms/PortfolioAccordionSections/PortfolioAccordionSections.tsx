@@ -48,7 +48,7 @@ export const PortfolioAccordionSections = ({ sections }: PortfolioAccordionSecti
                 <li key={article.href} className="flex min-h-0 min-w-0 flex-col">
                   <Article
                     title={article.title}
-                    preview={article.preview}
+                    preview={article.previewText}
                     image={{
                       src: article.imageSrc,
                       alt: article.imageAlt,

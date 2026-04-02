@@ -67,7 +67,8 @@ export const portfolioContent = {
         period: "October 2023 - Present",
         title: "Software Developer",
         company: "Plusgrade",
-        description: "Build products for travel partners to drive revenue and enhance customer experiences, collaborating with cross-functional teams to deliver reliable, high-quality features. Use technologies like React, MUI, ESLint/Oxlint, and monorepo architectures while focusing on clean code, fast learning, and a supportive team culture",
+        description:
+          "Build products for travel partners to drive revenue and enhance customer experiences, collaborating with cross-functional teams to deliver reliable, high-quality features. Use technologies like React, MUI, ESLint/Oxlint, and monorepo architectures while focusing on clean code, fast learning, and a supportive team culture",
         logoEmoji: "💺",
       },
       {

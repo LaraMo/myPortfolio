@@ -14,6 +14,9 @@ export const useDisplayHeroSubtitles = (
     if (subtitles.length <= 1) {
       return;
     }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
     const id = window.setInterval(() => {
       setIndex((value) => (value + 1) % subtitles.length);
     }, intervalMs);

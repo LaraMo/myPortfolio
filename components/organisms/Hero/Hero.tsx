@@ -18,7 +18,7 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
 
   return (
     <section
-      className="mx-auto flex max-w-4xl flex-col gap-10 px-6 py-16 sm:flex-row sm:items-center sm:gap-14 sm:py-20"
+      className="mx-auto flex max-w-4xl flex-col gap-5 px-6 py-10 sm:flex-row sm:items-center sm:gap-14 sm:py-14"
       aria-labelledby="hero-heading"
     >
       <Image
@@ -36,9 +36,9 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
             {title}
           </Typography>
         </h1>
-        <Typography variant="bodyLarge" color="muted" className="mt-6" as="p">
-          <span className="text-foreground">I am a </span>
-          {subtitles[index]}
+        <Typography variant="bodyLarge" className="mt-6" as="p">
+          <span className="text-muted-foreground">I am a </span>
+          <span className="font-medium text-foreground">{subtitles[index]}</span>
         </Typography>
       </div>
     </section>

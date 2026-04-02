@@ -35,7 +35,10 @@ export const Header = ({ cvUrl }: HeaderProps) => {
           <Link
             href={cvUrl}
             download
-            className={classNames(buttonVariants({ variant: "glass", size: "sm" }), "no-underline")}
+            className={classNames(
+              buttonVariants({ variant: "glass", size: "sm" }),
+              "no-underline transition-colors duration-200 hover:bg-background/60",
+            )}
           >
             <Icon icon={Download} size="sm" className="mr-1" />
             Résumé
@@ -44,6 +47,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
             variant="outline-glass"
             size="icon-sm"
             type="button"
+            className="transition-colors duration-200 hover:bg-muted/40"
             onClick={toggleTheme}
             aria-label="Toggle light or dark theme"
           >

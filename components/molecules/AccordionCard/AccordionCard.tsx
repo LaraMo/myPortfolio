@@ -45,12 +45,16 @@ export const AccordionCard = ({
       data-expanded={open ? "true" : "false"}
     >
       <div className="accordion-card-shell__rotor-wrap">
-        <UiCard className={classNames("accordion-card-shell__inner border-0 shadow-lg ring-0")}>
+        <UiCard
+          className={classNames(
+            "accordion-card-shell__inner border-0 shadow-lg ring-0 gap-0 py-0",
+          )}
+        >
           <CardHeader className="p-0">
             <button
               id={headerId}
               type="button"
-              className={classNames(trigger(), "px-4 py-4")}
+              className={classNames(trigger(), "py-5")}
               aria-expanded={open}
               aria-controls={panelId}
               onClick={() => {
@@ -59,7 +63,7 @@ export const AccordionCard = ({
               }}
               aria-label={`${open ? "Collapse" : "Expand"} section: ${title.trim()}`}
             >
-              <span className={triggerInner()}>
+              <span className={triggerInner()} aria-hidden="true">
                 <span
                   data-slot="card-title"
                   className="font-heading min-w-0 flex-1 text-base font-normal leading-snug group-data-[size=sm]/card:text-sm"
