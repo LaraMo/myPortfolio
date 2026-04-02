@@ -1,5 +1,1 @@
-export {
-  Footer,
-  type FooterProps,
-  type FooterContact,
-} from "./Footer";
+export { Footer } from "./Footer";

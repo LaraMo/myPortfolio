@@ -1,9 +1,13 @@
+import type { LucideIcon } from "lucide-react";
 import {
   Atom,
   Braces,
   Brain,
+  Briefcase,
+  Camera,
   Code2,
   FileCode,
+  GitBranch,
   Globe,
   Paintbrush,
   Smartphone,
@@ -96,16 +100,34 @@ export const portfolioContent = {
     ] satisfies WorkExperience[],
   },
   articles: articlesSectionMeta,
-  contact: {
-    title: "Get in touch",
-    body:
-      "If you have any website suggestions, comments and/or if you want to collaborate and/or just to talk :)",
-    buttonLabel: "Contact Me",
-    buttonHref: "mailto:hello@example.com",
-  },
   footer: {
-    note: "This website was made with Next.js, Tailwind, and lots of love!",
-    copyrightName: "Liora Lara Mezirovsky",
+    tagline:
+      "This website was made with Next.js, Tailwind and lots of love",
+    socialLinks: [
+      {
+        href: "https://www.linkedin.com/in/laramo/",
+        label: "Lara on LinkedIn",
+        text: "LinkedIn",
+        icon: Briefcase,
+      },
+      {
+        href: "https://www.instagram.com/super_woman_in_shorts",
+        label: "Lara on Instagram",
+        text: "Instagram",
+        icon: Camera,
+      },
+      {
+        href: "https://github.com/LaraMo",
+        label: "Lara on GitHub",
+        text: "Github",
+        icon: GitBranch,
+      },
+    ] satisfies ReadonlyArray<{
+      href: string;
+      label: string;
+      text: string;
+      icon: LucideIcon;
+    }>,
   },
 } as const;
 

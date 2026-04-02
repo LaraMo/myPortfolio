@@ -6,7 +6,7 @@ import { getMediumArticleEntries } from "@/content/mediumArticles";
 import { articlesSectionMeta, portfolioContent } from "@/content/portfolioContent";
 
 export default async function Home() {
-  const { header, hero, contact, footer, intro, skills, work } = portfolioContent;
+  const { header, hero, intro, skills, work } = portfolioContent;
   const entries = await getMediumArticleEntries();
   const articles = { ...articlesSectionMeta, entries };
 
@@ -25,11 +25,7 @@ export default async function Home() {
           sections={{ intro, skills, work, articles }}
         />
       </main>
-      <Footer
-        contact={contact}
-        note={footer.note}
-        copyrightName={footer.copyrightName}
-      />
+      <Footer />
     </div>
   );
 }

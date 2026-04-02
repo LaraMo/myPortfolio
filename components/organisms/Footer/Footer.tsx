@@ -1,53 +1,44 @@
 import { Link } from "@/components/atoms/Link";
 import { Typography } from "@/components/atoms/Typography";
-import { buttonVariants } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { portfolioContent } from "@/content/portfolioContent";
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-export type FooterContact = {
-  title: string;
-  body: string;
-  buttonLabel: string;
-  buttonHref: string;
-};
+export const Footer = () => {
+  const { tagline, socialLinks } = portfolioContent.footer;
 
-export type FooterProps = {
-  contact: FooterContact;
-  note: string;
-  copyrightName: string;
-};
-
-export const Footer = ({ contact, note, copyrightName }: FooterProps) => {
-  const year = new Date().getFullYear();
   return (
-    <footer className="mt-auto border-t border-[var(--glass-border)] bg-[var(--glass-surface)]/70 py-10 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-4xl flex-col gap-8 px-6 text-center sm:text-left">
-        <section aria-labelledby="footer-contact-heading" className="space-y-4">
-          <Typography id="footer-contact-heading" variant="h3" as="h2">
-            {contact.title}
-          </Typography>
-          <Typography variant="body" as="p" color="muted">
-            {contact.body}
-          </Typography>
-          <div>
-            <Link
-              href={contact.buttonHref}
-              className={classNames(
-                buttonVariants({ variant: "glass", size: "sm" }),
-                "inline-flex no-underline"
-              )}
-            >
-              {contact.buttonLabel}
-            </Link>
-          </div>
-        </section>
-        <div className="flex flex-col gap-3 border-t border-[var(--glass-border)] pt-8">
-          <Typography variant="small" color="muted">
-            {note}
-          </Typography>
-          <Typography variant="caption" color="muted">
-            © {year} {copyrightName}
-          </Typography>
-        </div>
+    <footer className="mt-auto border-t border-(--glass-border) bg-(--glass-surface)/70 py-10 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center">
+        <Typography variant="body" as="p" color="muted" className="max-w-md">
+          {tagline}
+        </Typography>
+        <Typography variant="caption" color="muted" as="p">
+          © {new Date().getFullYear()}
+        </Typography>
+        <ul
+          className="flex list-none flex-wrap justify-center gap-3 p-0"
+          aria-label="Social profiles"
+        >
+          {socialLinks.map(({ href, label, text, icon }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className={classNames(
+                  "inline-flex no-underline rounded-4xl",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                )}
+              >
+                <Badge icon={icon} variant="secondary" size="lg">
+                  {text}
+                </Badge>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );
