@@ -1,5 +1,5 @@
-import NextLink from "next/link";
 import type { ComponentPropsWithoutRef } from "react";
+import NextLink from "next/link";
 
 import { classNames } from "@/lib/utils/classNames/classNames";
 

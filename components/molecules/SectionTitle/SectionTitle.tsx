@@ -1,5 +1,4 @@
 import { Typography } from "@/components/atoms/Typography";
-
 import { splitTitleInitial } from "./utils/splitTitleInitial";
 
 export type SectionTitleProps = {
@@ -14,9 +13,9 @@ export const SectionTitle = ({ title }: SectionTitleProps) => {
       <Typography variant="sectionTitleCap" aria-hidden>
         {initial}
       </Typography>
-        <Typography variant="sectionTitleRest" aria-hidden>
-          {rest}
-        </Typography>
+      <Typography variant="sectionTitleRest" aria-hidden>
+        {rest}
+      </Typography>
     </span>
   );
 };

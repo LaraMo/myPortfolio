@@ -1,7 +1,6 @@
 import { Typography } from "@/components/atoms/Typography";
 import { classNames } from "@/lib/utils/classNames/classNames";
 import type { WorkExperience } from "@/types/content";
-
 import { experienceTimelineVariants } from "./experienceTimelineVariants";
 
 export type ExperienceTimelineProps = {
@@ -9,10 +8,7 @@ export type ExperienceTimelineProps = {
   className?: string;
 };
 
-export const ExperienceTimeline = ({
-  entries,
-  className,
-}: ExperienceTimelineProps) => {
+export const ExperienceTimeline = ({ entries, className }: ExperienceTimelineProps) => {
   const { root, spine, item, nodeCell, nodeShell, content, headline, period, description } =
     experienceTimelineVariants();
 
@@ -23,11 +19,7 @@ export const ExperienceTimeline = ({
         <li key={entry.period} className={item()}>
           <div className={nodeCell()}>
             <div className={nodeShell()}>
-              <span
-                className="select-none text-3xl leading-none"
-                aria-hidden
-                title={entry.company}
-              >
+              <span className="select-none text-3xl leading-none" aria-hidden title={entry.company}>
                 {entry.logoEmoji}
               </span>
             </div>
@@ -40,12 +32,7 @@ export const ExperienceTimeline = ({
                 @ {entry.company}
               </Typography>
             </Typography>
-            <Typography
-              variant="caption"
-              as="p"
-              color="muted"
-              className={period()}
-            >
+            <Typography variant="caption" as="p" color="muted" className={period()}>
               {entry.period}
             </Typography>
             <Typography variant="body" as="p" className={description()}>

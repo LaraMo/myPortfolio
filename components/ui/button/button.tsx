@@ -3,7 +3,6 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 
 import { classNames } from "@/lib/utils/classNames/classNames";
-
 import { buttonVariants, type ButtonVariantProps } from "./buttonVariants";
 
 export type ButtonProps = ButtonPrimitive.Props & ButtonVariantProps;

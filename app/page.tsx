@@ -21,9 +21,7 @@ export default async function Home() {
           imageAlt={hero.imageAlt}
         />
 
-        <PortfolioAccordionSections
-          sections={{ intro, skills, work, articles }}
-        />
+        <PortfolioAccordionSections sections={{ intro, skills, work, articles }} />
       </main>
       <Footer />
     </div>

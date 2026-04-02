@@ -7,9 +7,7 @@ const DEFAULT_DURATION_MS = 750;
 /**
  * Short-lived “pulse” flag for CSS animations, cleared after `durationMs`.
  */
-export const useShinePulse = (
-  durationMs: number = DEFAULT_DURATION_MS,
-): [boolean, () => void] => {
+export const useShinePulse = (durationMs: number = DEFAULT_DURATION_MS): [boolean, () => void] => {
   const [active, setActive] = useState(false);
   const timerRef = useRef<number | null>(null);
 

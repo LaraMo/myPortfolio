@@ -2,11 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 
-import {
-  tailwindMaxMdQuery,
-  tailwindMdOnlyQuery,
-  tailwindMinLgQuery,
-} from "./tailwindBreakpoints";
+import { tailwindMaxMdQuery, tailwindMdOnlyQuery, tailwindMinLgQuery } from "./tailwindBreakpoints";
 
 const serverSnapshot = () => false;
 
@@ -15,16 +11,16 @@ const serverSnapshot = () => false;
  * paint may differ until hydration (same class of flash as `useEffect` + `matchMedia`).
  */
 export const useMediaQuery = (query: string): boolean => {
-  const subscribe = useCallback((onStoreChange: () => void) => {
-    const mq = window.matchMedia(query);
-    mq.addEventListener("change", onStoreChange);
-    return () => mq.removeEventListener("change", onStoreChange);
-  }, [query]);
-
-  const getSnapshot = useCallback(
-    () => window.matchMedia(query).matches,
+  const subscribe = useCallback(
+    (onStoreChange: () => void) => {
+      const mq = window.matchMedia(query);
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
     [query],
   );
+
+  const getSnapshot = useCallback(() => window.matchMedia(query).matches, [query]);
 
   return useSyncExternalStore(subscribe, getSnapshot, serverSnapshot);
 };

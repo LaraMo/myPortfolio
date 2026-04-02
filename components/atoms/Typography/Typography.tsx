@@ -2,7 +2,6 @@ import type { ComponentPropsWithoutRef, ElementType } from "react";
 import type { VariantProps } from "tailwind-variants";
 
 import { classNames } from "@/lib/utils/classNames/classNames";
-
 import { typographyVariants } from "./typographyVariants";
 
 const defaultElement: Record<
@@ -39,14 +38,10 @@ export const Typography = ({
   className,
   ...props
 }: TypographyProps) => {
-  const Component =
-    as ?? defaultElement[variant as keyof typeof defaultElement];
+  const Component = as ?? defaultElement[variant as keyof typeof defaultElement];
   return (
     <Component
-      className={classNames(
-        typographyVariants({ variant, gradient, color }),
-        className,
-      )}
+      className={classNames(typographyVariants({ variant, gradient, color }), className)}
       {...props}
     />
   );

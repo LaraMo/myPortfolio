@@ -14,8 +14,7 @@ describe("useDisplayHeroSubtitles", () => {
 
   it("stays at 0 when there is at most one subtitle", () => {
     const { result, rerender } = renderHook(
-      ({ subtitles }: { subtitles: string[] }) =>
-        useDisplayHeroSubtitles(subtitles),
+      ({ subtitles }: { subtitles: string[] }) => useDisplayHeroSubtitles(subtitles),
       { initialProps: { subtitles: [] as string[] } },
     );
 
@@ -30,9 +29,7 @@ describe("useDisplayHeroSubtitles", () => {
 
   it("advances index on interval and wraps modulo length", () => {
     const subtitles = ["a", "b", "c"];
-    const { result } = renderHook(() =>
-      useDisplayHeroSubtitles(subtitles, 1000),
-    );
+    const { result } = renderHook(() => useDisplayHeroSubtitles(subtitles, 1000));
 
     expect(result.current).toBe(0);
 
@@ -50,9 +47,7 @@ describe("useDisplayHeroSubtitles", () => {
   it("clears the interval on unmount", () => {
     const clearSpy = vi.spyOn(window, "clearInterval");
     const subtitles = ["a", "b"];
-    const { unmount } = renderHook(() =>
-      useDisplayHeroSubtitles(subtitles, 500),
-    );
+    const { unmount } = renderHook(() => useDisplayHeroSubtitles(subtitles, 500));
 
     unmount();
     expect(clearSpy).toHaveBeenCalled();

@@ -29,7 +29,7 @@ export const Footer = () => {
                 aria-label={label}
                 className={classNames(
                   "inline-flex no-underline rounded-4xl",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 )}
               >
                 <Badge icon={icon} variant="secondary" size="lg">

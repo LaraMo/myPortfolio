@@ -59,13 +59,12 @@ const formatPublishedDate = (pubDate: string | undefined): string => {
     .trim();
 };
 
-const convertCategoriesToTags	 = (categories: string[] | undefined): string[] => {
+const convertCategoriesToTags = (categories: string[] | undefined): string[] => {
   if (!categories?.length) {
     return [];
   }
   return [...categories].filter(Boolean);
 };
-
 
 const mapRssItemToArticle = (rssItem: RssItem): Article | null => {
   const title = rssItem.title?.trim();
@@ -92,7 +91,7 @@ const mapRssItemToArticle = (rssItem: RssItem): Article | null => {
     imageSrc,
     imageAlt,
     href,
-    tags: convertCategoriesToTags	(rssItem.categories),
+    tags: convertCategoriesToTags(rssItem.categories),
   };
 };
 

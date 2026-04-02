@@ -1,8 +1,45 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["oxc", "unicorn", "typescript", "react", "nextjs", "vitest"],
+  "categories": {
+    "style": "off"
+  },
+  "plugins": [
+    "eslint",
+    "oxc",
+    "unicorn",
+    "typescript",
+    "react",
+    "nextjs",
+    "vitest",
+    "import",
+    "jsx-a11y"
+  ],
+  "options": {
+    "typeAware": true
+  },
   "rules": {
-    "unicorn/no-array-for-each": "off"
+    "unicorn/no-array-for-each": "off",
+    "typescript/consistent-type-imports": "error",
+    "typescript/no-non-null-assertion": "warn",
+    "typescript/no-misused-promises": "error",
+    "eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "eslint/complexity": ["error", { "max": 20 }],
+    "eslint/no-console": ["error", { "allow": ["warn", "error"] }],
+    "eslint/no-shadow": "warn",
+    "eslint/no-unused-expressions": "warn",
+    "eslint/no-redeclare": "error",
+    "react/self-closing-comp": "error",
+    "react/no-array-index-key": "warn",
+    "react/exhaustive-deps": "warn",
+    "jsx-a11y/alt-text": "error",
+    "jsx-a11y/anchor-is-valid": "error",
+    "jsx-a11y/click-events-have-key-events": "warn"
   },
   "ignorePatterns": [".next/**", "node_modules/**", "coverage/**"],
   "env": {
@@ -12,7 +49,13 @@
   },
   "settings": {
     "react": {
-      "version": "19.2"
+      "version": "19.2",
+      "linkComponents": [{ "name": "Link", "attribute": "href" }]
+    },
+    "jsx-a11y": {
+      "components": {
+        "Link": "a"
+      }
     }
   }
 }

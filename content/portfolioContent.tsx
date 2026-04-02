@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 import {
   Atom,
   Braces,
@@ -11,15 +10,15 @@ import {
   Globe,
   Paintbrush,
   Smartphone,
+  type LucideIcon,
 } from "lucide-react";
 
 import type { Article, Skill, WorkExperience } from "@/types/content";
 
-
 export const articlesSectionMeta = {
   title: "A few articles I wrote",
   catalogUrl: "https://medium.com/@laramo",
-}
+};
 
 export const portfolioContent = {
   header: {
@@ -39,8 +38,7 @@ export const portfolioContent = {
   intro: {
     title: "Little bit about me",
     emoji: "👋",
-    body:
-      "I am a skilled and motivated software developer since 2019  with experience in developing innovative and efficient software solutions. I am proficient in React.js and Javascript with a focus on front-end development. I am interested in web/mobile development offering enthusiasm and understanding of various programming languages and frameworks.",
+    body: "I am a skilled and motivated software developer since 2019  with experience in developing innovative and efficient software solutions. I am proficient in React.js and Javascript with a focus on front-end development. I am interested in web/mobile development offering enthusiasm and understanding of various programming languages and frameworks.",
   },
   skills: {
     title: "A few skills",
@@ -59,7 +57,7 @@ export const portfolioContent = {
       { label: "SQL", icon: Code2 },
       { label: "C#", icon: FileCode },
       { label: "Java", icon: FileCode },
-      {label: "Agile", icon: Brain}
+      { label: "Agile", icon: Brain },
     ] satisfies Skill[],
   },
   work: {
@@ -69,16 +67,14 @@ export const portfolioContent = {
         period: "October 2023 - Present",
         title: "Software Developer",
         company: "Plusgrade",
-        description:
-          "TBD",
+        description: "TBD",
         logoEmoji: "💺",
       },
       {
         period: "March 2022 - October 2023",
         title: "IT Developer",
         company: "Ubisoft",
-        description:
-          "Code new and existing UI components and suggest improvements",
+        description: "Code new and existing UI components and suggest improvements",
         logoEmoji: "🎮",
       },
       {
@@ -101,8 +97,7 @@ export const portfolioContent = {
   },
   articles: articlesSectionMeta,
   footer: {
-    tagline:
-      "This website was made with Next.js, Tailwind and lots of love",
+    tagline: "This website was made with Next.js, Tailwind and lots of love",
     socialLinks: [
       {
         href: "https://www.linkedin.com/in/laramo/",
@@ -132,10 +127,7 @@ export const portfolioContent = {
 } as const;
 
 /** Intro, skills, work, and articles blocks for the home accordion. */
-export type PortfolioMainSections = Pick<
-  typeof portfolioContent,
-  "intro" | "skills" | "work"
-> & {
+export type PortfolioMainSections = Pick<typeof portfolioContent, "intro" | "skills" | "work"> & {
   articles: {
     title: string;
     catalogUrl: string;

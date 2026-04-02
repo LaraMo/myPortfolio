@@ -1,8 +1,8 @@
 "use client";
 
-import { Download, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Download, Moon, Sun } from "lucide-react";
 
 import { BrandLmMark } from "@/components/atoms/BrandLmMark";
 import { Button } from "@/components/atoms/Button";
@@ -35,10 +35,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
           <Link
             href={cvUrl}
             download
-            className={classNames(
-              buttonVariants({ variant: "glass", size: "sm" }),
-              "no-underline"
-            )}
+            className={classNames(buttonVariants({ variant: "glass", size: "sm" }), "no-underline")}
           >
             <Icon icon={Download} size="sm" className="mr-1" />
             Résumé
@@ -51,10 +48,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
             aria-label="Toggle light or dark theme"
           >
             {mounted ? (
-              <Icon
-                icon={resolvedTheme === "dark" ? Sun : Moon}
-                size="sm"
-              />
+              <Icon icon={resolvedTheme === "dark" ? Sun : Moon} size="sm" />
             ) : (
               <Icon icon={Moon} size="sm" />
             )}

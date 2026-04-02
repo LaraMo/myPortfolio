@@ -1,21 +1,12 @@
 "use client";
 
-import { ChevronDown } from "lucide-react";
 import { useId, useMemo, type ReactNode } from "react";
+import { ChevronDown } from "lucide-react";
 
 import { SectionTitle } from "@/components/molecules/SectionTitle";
-import {
-  Card as UiCard,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { CardContent, CardHeader, Card as UiCard } from "@/components/ui/card";
 import { classNames } from "@/lib/utils/classNames/classNames";
-import {
-  useIsMobile,
-  useResponsiveDefaultOpen,
-  useShinePulse,
-} from "@/libs/hooks";
-
+import { useIsMobile, useResponsiveDefaultOpen, useShinePulse } from "@/libs/hooks";
 import { accordionCardVariants } from "./accordionCardVariants";
 
 export type AccordionCardProps = {
@@ -41,7 +32,7 @@ export const AccordionCard = ({
 
   const { trigger, triggerInner, panel, chevron } = useMemo(
     () => accordionCardVariants({ open }),
-    [open]
+    [open],
   );
 
   return (
@@ -49,16 +40,12 @@ export const AccordionCard = ({
       className={classNames(
         "accordion-card-shell group/accordion shadow-xl shadow-black/10 ring-1 ring-border/50 dark:shadow-black/40 dark:ring-border/40",
         shinePulse && "accordion-card-shell--pulse",
-        className
+        className,
       )}
       data-expanded={open ? "true" : "false"}
     >
       <div className="accordion-card-shell__rotor-wrap">
-        <UiCard
-          className={classNames(
-            "accordion-card-shell__inner border-0 shadow-lg ring-0"
-          )}
-        >
+        <UiCard className={classNames("accordion-card-shell__inner border-0 shadow-lg ring-0")}>
           <CardHeader className="p-0">
             <button
               id={headerId}
@@ -103,9 +90,6 @@ export type AccordionCardGroupProps = {
   className?: string;
 };
 
-export const AccordionCardGroup = ({
-  children,
-  className,
-}: AccordionCardGroupProps) => (
+export const AccordionCardGroup = ({ children, className }: AccordionCardGroupProps) => (
   <div className={classNames("flex flex-col gap-8", className)}>{children}</div>
 );

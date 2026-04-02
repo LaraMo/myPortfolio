@@ -1,9 +1,8 @@
-import type { LucideIcon } from "lucide-react";
 import type { ComponentPropsWithoutRef } from "react";
+import type { LucideIcon } from "lucide-react";
 
 import { Icon } from "@/components/ui/icon";
 import { classNames } from "@/lib/utils/classNames/classNames";
-
 import { badgeVariants, type BadgeVariantProps } from "./badgeVariants";
 
 export type BadgeProps = ComponentPropsWithoutRef<"span"> &

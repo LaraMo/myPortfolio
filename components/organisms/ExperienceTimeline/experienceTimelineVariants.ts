@@ -1,5 +1,6 @@
-import { captionMetaClassName } from "@/components/atoms/Typography/typographyMeta";
 import { tv as tailwindVariants } from "tailwind-variants";
+
+import { captionMetaClassName } from "@/components/atoms/Typography/typographyMeta";
 
 export const experienceTimelineVariants = tailwindVariants({
   slots: {

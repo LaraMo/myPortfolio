@@ -1,9 +1,9 @@
 "use client";
 
-import { Image } from "@/components/atoms/Image";
-import { Typography } from "@/components/atoms/Typography";
 import type { ImageProps } from "next/image";
 
+import { Image } from "@/components/atoms/Image";
+import { Typography } from "@/components/atoms/Typography";
 import { useDisplayHeroSubtitles } from "./hooks/useDisplayHeroSubtitles";
 
 export type HeroProps = {
@@ -32,21 +32,11 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
       />
       <div className="min-w-0 flex-1 text-center sm:text-left">
         <h1 id="hero-heading">
-          <Typography
-            variant="display"
-            gradient
-            as="span"
-            className="block text-balance"
-          >
+          <Typography variant="display" gradient as="span" className="block text-balance">
             {title}
           </Typography>
         </h1>
-        <Typography
-          variant="bodyLarge"
-          color="muted"
-          className="mt-6"
-          as="p"
-        >
+        <Typography variant="bodyLarge" color="muted" className="mt-6" as="p">
           <span className="text-foreground">I am a </span>
           {subtitles[index]}
         </Typography>

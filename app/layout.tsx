@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/lib/utils/theme/ThemeProvider";
 import { fontVariableClassNames } from "./fonts";
+
 import "./globals.css";
 
 export default function RootLayout({

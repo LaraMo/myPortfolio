@@ -169,16 +169,14 @@
     transition: opacity 0.25s ease;
   }
 
-  .accordion-card-shell[data-expanded="false"]:hover
-    .accordion-card-shell__rotor-wrap::before {
+  .accordion-card-shell[data-expanded="false"]:hover .accordion-card-shell__rotor-wrap::before {
     opacity: 1;
     animation: accordion-shine-spin 7s linear infinite;
   }
 
   .accordion-card-shell--pulse .accordion-card-shell__rotor-wrap::before {
     opacity: 1;
-    animation: accordion-shine-tick 0.75s cubic-bezier(0.32, 0.72, 0.35, 1) 1
-      forwards !important;
+    animation: accordion-shine-tick 0.75s cubic-bezier(0.32, 0.72, 0.35, 1) 1 forwards !important;
   }
 
   .dark .accordion-card-shell__rotor-wrap::before {
@@ -225,8 +223,7 @@
       transition: opacity 0.2s ease;
     }
 
-    .accordion-card-shell[data-expanded="false"]:hover
-      .accordion-card-shell__rotor-wrap::before {
+    .accordion-card-shell[data-expanded="false"]:hover .accordion-card-shell__rotor-wrap::before {
       opacity: 0.32;
       transform: rotate(0deg);
     }

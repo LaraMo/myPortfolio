@@ -1,5 +1,4 @@
 import { classNames } from "@/lib/utils/classNames/classNames";
-
 import { brandLmMarkVariants } from "./brandLmMarkVariants";
 
 export type BrandLmMarkProps = {
@@ -10,11 +9,7 @@ export const BrandLmMark = ({ className }: BrandLmMarkProps) => {
   const { root, text } = brandLmMarkVariants();
 
   return (
-    <div
-      className={classNames(root(), "px-3 py-1", className)}
-      role="img"
-      aria-label="LaraMo"
-    >
+    <div className={classNames(root(), "px-3 py-1", className)} role="img" aria-label="LaraMo">
       <span className={text()} aria-hidden>
         LM
       </span>

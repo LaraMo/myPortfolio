@@ -1,23 +1,18 @@
 import { Link } from "@/components/atoms/Link";
 import { Typography } from "@/components/atoms/Typography";
-import {
-  AccordionCard,
-  AccordionCardGroup,
-} from "@/components/molecules/AccordionCard";
+import { AccordionCard, AccordionCardGroup } from "@/components/molecules/AccordionCard";
 import { Article } from "@/components/molecules/Article";
-import { Badge } from "@/components/ui/badge";
 import { ExperienceTimeline } from "@/components/organisms/ExperienceTimeline";
+import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button/buttonVariants";
-import { classNames } from "@/lib/utils/classNames/classNames";
 import type { PortfolioMainSections } from "@/content/portfolioContent";
+import { classNames } from "@/lib/utils/classNames/classNames";
 
 export type PortfolioAccordionSectionsProps = {
   sections: PortfolioMainSections;
 };
 
-export const PortfolioAccordionSections = ({
-  sections,
-}: PortfolioAccordionSectionsProps) => {
+export const PortfolioAccordionSections = ({ sections }: PortfolioAccordionSectionsProps) => {
   const { intro, skills, work, articles } = sections;
 
   return (
@@ -32,12 +27,7 @@ export const PortfolioAccordionSections = ({
         <AccordionCard title={skills.title}>
           <div className="flex flex-wrap gap-2">
             {skills.items.map((item) => (
-              <Badge
-                key={item.label}
-                icon={item.icon}
-                variant="glass"
-                size="lg"
-              >
+              <Badge key={item.label} icon={item.icon} variant="glass" size="lg">
                 {item.label}
               </Badge>
             ))}
@@ -55,10 +45,7 @@ export const PortfolioAccordionSections = ({
               role="list"
             >
               {articles.entries.map((article, index) => (
-                <li
-                  key={article.href}
-                  className="flex min-h-0 min-w-0 flex-col"
-                >
+                <li key={article.href} className="flex min-h-0 min-w-0 flex-col">
                   <Article
                     title={article.title}
                     preview={article.preview}
@@ -81,7 +68,7 @@ export const PortfolioAccordionSections = ({
               rel="noopener noreferrer"
               className={classNames(
                 buttonVariants({ variant: "outline", size: "default" }),
-                "w-full justify-center self-center sm:w-auto"
+                "w-full justify-center self-center sm:w-auto",
               )}
             >
               View full catalog here
@@ -92,4 +79,3 @@ export const PortfolioAccordionSections = ({
     </div>
   );
 };
-

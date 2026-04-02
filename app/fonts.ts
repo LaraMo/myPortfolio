@@ -11,7 +11,4 @@ export const geistMono = Geist_Mono({
 });
 
 /** Apply on `<html>` so `globals.css` @theme font tokens resolve. */
-export const fontVariableClassNames = [
-  geistSans.variable,
-  geistMono.variable,
-].join(" ");
+export const fontVariableClassNames = [geistSans.variable, geistMono.variable].join(" ");
