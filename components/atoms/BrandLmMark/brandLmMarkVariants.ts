@@ -9,9 +9,8 @@ export const brandLmMarkVariants = tailwindVariants({
     ].join(" "),
     text: [
       "relative font-heading text-2xl font-black tracking-tight sm:text-3xl",
-      "bg-gradient-to-r from-fuchsia-600 via-purple-600 to-violet-700 bg-clip-text text-transparent",
-      "dark:from-fuchsia-400 dark:via-purple-400 dark:to-violet-400",
-      "[text-shadow:0_0.06em_0_rgb(88_28_120_/_0.35),0_0.12em_0.3em_rgb(60_20_100_/_0.4)]",
+      "bg-gradient-to-r from-brand-from via-brand-via to-brand-to bg-clip-text text-transparent",
+      "[text-shadow:0_0.06em_0_color-mix(in_oklch,var(--brand)_35%,transparent),0_0.12em_0.3em_color-mix(in_oklch,var(--brand-gradient-to)_40%,transparent)]",
     ].join(" "),
   },
 });

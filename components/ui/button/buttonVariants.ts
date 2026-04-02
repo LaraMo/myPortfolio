@@ -5,6 +5,8 @@ export const buttonVariants = tailwindVariants({
   variants: {
     variant: {
       default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+      brand:
+        "border-transparent bg-brand text-brand-foreground shadow-sm hover:bg-brand/90 focus-visible:ring-ring/40 [a]:hover:bg-brand/90",
       outline:
         "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
       secondary:
@@ -13,7 +15,7 @@ export const buttonVariants = tailwindVariants({
         "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
       destructive:
         "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-      link: "text-primary underline-offset-4 hover:underline",
+      link: "text-link underline-offset-4 hover:text-link-hover hover:underline",
       glass:
         "border border-white/25 bg-background/45 text-foreground shadow-lg shadow-black/5 backdrop-blur-xl hover:bg-background/55 dark:border-white/10 dark:bg-background/30 dark:shadow-black/20 dark:hover:bg-background/45",
       "outline-glass":

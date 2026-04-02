@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { ComponentPropsWithoutRef } from "react";
 
-import { Link } from "@/components/atoms/Link";
+import { Link, linkProseVariants } from "@/components/atoms/Link";
 import {
   Typography,
   captionMetaClassName,
@@ -103,7 +103,7 @@ export const Article = ({
         <CardFooter className="shrink-0 justify-start border-t-0 bg-transparent px-3 pb-3 pt-0">
           <Link
             href={href}
-            className="inline-flex text-xs font-semibold text-sky-600 underline decoration-sky-600/80 underline-offset-4 outline-none transition-colors hover:text-sky-700 hover:decoration-sky-700 dark:text-sky-400 dark:decoration-sky-400/80 dark:hover:text-sky-300 dark:hover:decoration-sky-300 focus-visible:ring-2 focus-visible:ring-sky-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+            className={linkProseVariants()}
             aria-label={`Read more: ${title}`}
           >
             Read more
