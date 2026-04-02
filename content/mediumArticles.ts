@@ -75,7 +75,7 @@ const mapRssItemToArticle = (rssItem: RssItem): Article | null => {
 
   const encoded = rssItem["content:encoded"];
   const htmlBlob = [encoded, rssItem.content, rssItem.summary].filter(Boolean).join(" ");
-  const preview = rssItem.contentSnippet?.trim() || stripHtml(htmlBlob);
+  const previewText = rssItem.contentSnippet?.trim() || stripHtml(htmlBlob);
 
   const remoteImage = firstHttpsImageSrc(encoded);
 
@@ -87,7 +87,7 @@ const mapRssItemToArticle = (rssItem: RssItem): Article | null => {
   return {
     title,
     publishedAt: formatPublishedDate(rssItem.pubDate),
-    preview,
+    previewText,
     imageSrc,
     imageAlt,
     href,
