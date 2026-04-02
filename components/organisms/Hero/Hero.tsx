@@ -5,7 +5,6 @@ import { Typography } from "@/components/atoms/Typography";
 import type { ImageProps } from "next/image";
 
 import { useDisplayHeroSubtitles } from "./hooks/useDisplayHeroSubtitles";
-import { splitDisplayName } from "./utils/splitDisplayName";
 
 export type HeroProps = {
   image: ImageProps["src"];
@@ -16,9 +15,6 @@ export type HeroProps = {
 
 export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
   const index = useDisplayHeroSubtitles(subtitles);
-  const [line1, line2] = splitDisplayName(title);
-
-  const subtitle = subtitles[index] ?? "";
 
   return (
     <section
@@ -35,15 +31,15 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
         className="mx-auto size-[200px] shrink-0 sm:mx-0 sm:size-[220px]"
       />
       <div className="min-w-0 flex-1 text-center sm:text-left">
-        <h1 id="hero-heading" className="space-y-1">
-          <Typography variant="display" gradient as="span" className="block">
-            {line1}
+        <h1 id="hero-heading">
+          <Typography
+            variant="display"
+            gradient
+            as="span"
+            className="block text-balance"
+          >
+            {title}
           </Typography>
-          {line2 ? (
-            <Typography variant="display" gradient as="span" className="block">
-              {line2}
-            </Typography>
-          ) : null}
         </h1>
         <Typography
           variant="bodyLarge"
@@ -52,7 +48,7 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
           as="p"
         >
           <span className="text-foreground">I am a </span>
-          {subtitle}
+          {subtitles[index]}
         </Typography>
       </div>
     </section>
