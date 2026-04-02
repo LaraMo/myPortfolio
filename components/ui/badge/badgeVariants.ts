@@ -25,7 +25,7 @@ export const badgeVariants = tailwindVariants({
         "border-[var(--glass-border)] bg-[var(--glass-surface)] text-foreground shadow-sm backdrop-blur-md [a]:hover:bg-[var(--glass-surface)]/90 [&>svg]:text-primary",
     },
     size: {
-      sm: "h-5 min-h-5 gap-0.5 px-1.5 py-0 text-[0.65rem] leading-none [&>svg]:!size-2.5",
+      sm: "h-5 min-h-5 gap-0.5 px-1.5 py-0 text-xs leading-none [&>svg]:!size-2.5",
       md: "h-6 min-h-6 gap-1 px-2 py-0.5 text-xs [&>svg]:!size-3",
       lg: "min-h-8 gap-2 px-3 py-1.5 text-base [&>svg]:!size-3.5",
     },

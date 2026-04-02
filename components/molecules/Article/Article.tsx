@@ -15,18 +15,14 @@ import {
 } from "@/components/ui/card";
 import { classNames } from "@/lib/utils/classNames/classNames";
 
-const glassCard =
-  "border-[var(--glass-border)] bg-[var(--glass-surface)] shadow-lg backdrop-blur-xl";
-
 export type ArticleProps = {
   title: string;
   preview: string;
   image: { src: string; alt: string };
   publishedAt: string;
-  tags: readonly string[];
+  tags: string[];
   href: string;
-  /** Stable id for the title heading (`aria-labelledby` on `<article>`). */
-  titleId?: string;
+  titleId: string;
   className?: string;
 };
 
@@ -40,25 +36,18 @@ export const Article = ({
   titleId,
   className,
 }: ArticleProps) => {
+
   const articleProps: ComponentPropsWithoutRef<"article"> = {
     className: classNames(
       "@container/article flex h-full min-h-0 flex-col",
       className
     ),
   };
-  if (titleId) {
-    articleProps["aria-labelledby"] = titleId;
-  }
 
   return (
-    <article {...articleProps}>
-      <Card
-        className={classNames(
-          glassCard,
-          "flex h-full min-h-0 flex-1 flex-col gap-0 py-0 has-[>img:first-child]:pt-0"
-        )}
-      >
-        <div className="relative aspect-[5/3] w-full shrink-0 overflow-hidden rounded-t-xl">
+    <article {...{...articleProps, "aria-labelledby": titleId}}>
+      <Card className={"border-(--glass-border) bg-(--glass-surface) shadow-lg backdrop-blur-xl flex h-full min-h-0 flex-1 flex-col gap-0 py-0 has-[>img:first-child]:pt-0"}>
+        <div className="relative aspect-5/3 w-full shrink-0 overflow-hidden rounded-t-xl">
           <Image
             src={image.src}
             alt={image.alt}
@@ -70,9 +59,8 @@ export const Article = ({
         <CardHeader className="shrink-0 gap-1 px-3 pt-3 pb-1">
           <Typography
             as="h2"
-            variant="h2"
+            variant="body"
             id={titleId}
-            className="font-heading !text-base !font-medium !leading-snug !tracking-normal sm:!text-base"
           >
             {title}
           </Typography>

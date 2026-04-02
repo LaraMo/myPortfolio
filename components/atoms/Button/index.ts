@@ -3,4 +3,4 @@ export {
   type ButtonProps,
   buttonVariants,
   type ButtonVariantProps,
-} from "./Button";
+} from "@/components/ui/button";

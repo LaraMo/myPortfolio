@@ -28,7 +28,7 @@ export const Header = ({ cvUrl }: HeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--glass-border)] bg-[var(--glass-surface)]/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-(--glass-border) bg-(--glass-surface)/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <BrandLmMark />
         <div className="flex flex-wrap items-center justify-end gap-2 sm:ml-auto">

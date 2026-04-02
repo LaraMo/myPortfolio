@@ -24,7 +24,7 @@ export const ExperienceTimeline = ({
           <div className={nodeCell()}>
             <div className={nodeShell()}>
               <span
-                className="select-none text-[1.75rem] leading-none"
+                className="select-none text-3xl leading-none"
                 aria-hidden
                 title={entry.company}
               >

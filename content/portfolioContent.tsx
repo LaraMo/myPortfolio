@@ -11,12 +11,11 @@ import {
 
 import type { Article, Skill, WorkExperience } from "@/types/content";
 
-/** Static accordion chrome; article rows come from `getMediumArticleEntries`. */
+
 export const articlesSectionMeta = {
   title: "A few articles I wrote",
   catalogUrl: "https://medium.com/@laramo",
-  catalogButtonLabel: "View full catalog here",
-} as const;
+}
 
 export const portfolioContent = {
   header: {
@@ -118,7 +117,6 @@ export type PortfolioMainSections = Pick<
   articles: {
     title: string;
     catalogUrl: string;
-    catalogButtonLabel: string;
     entries: Article[];
   };
 };

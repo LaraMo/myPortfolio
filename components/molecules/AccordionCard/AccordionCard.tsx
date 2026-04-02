@@ -1,19 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import {
-  Children,
-  cloneElement,
-  isValidElement,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-  type ReactElement,
-  type ReactNode,
-} from "react";
+import { useId, useMemo, type ReactNode } from "react";
 
 import { SectionTitle } from "@/components/molecules/SectionTitle";
 import {
@@ -22,67 +10,34 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { classNames } from "@/lib/utils/classNames/classNames";
+import {
+  useIsMobile,
+  useResponsiveDefaultOpen,
+  useShinePulse,
+} from "@/libs/hooks";
 
 import { accordionCardVariants } from "./accordionCardVariants";
-
-const MD_DOWN = "(max-width: 767px)";
 
 export type AccordionCardProps = {
   title: string;
   children: ReactNode;
   className?: string;
-  /** Injected by AccordionCardGroup: first index open on desktop by default. */
-  sectionIndex?: number;
+  /** When true, panel starts open on desktop. Omit or false for collapsed by default. */
+  defaultOpen?: boolean;
 };
 
 export const AccordionCard = ({
   title,
   children,
   className,
-  sectionIndex = 0,
+  defaultOpen = false,
 }: AccordionCardProps) => {
   const panelId = useId();
   const headerId = `${panelId}-header`;
 
-  const [open, setOpen] = useState(sectionIndex === 0);
-  const [shinePulse, setShinePulse] = useState(false);
-  const pulseTimerRef = useRef<number | null>(null);
-
-  const triggerShinePulse = useCallback(() => {
-    setShinePulse(true);
-    if (pulseTimerRef.current) {
-      window.clearTimeout(pulseTimerRef.current);
-    }
-    pulseTimerRef.current = window.setTimeout(() => {
-      setShinePulse(false);
-      pulseTimerRef.current = null;
-    }, 750);
-  }, []);
-
-  useEffect(
-    () => () => {
-      if (pulseTimerRef.current) {
-        window.clearTimeout(pulseTimerRef.current);
-      }
-    },
-    []
-  );
-
-  const applyLayoutDefault = useCallback(() => {
-    const mq = window.matchMedia(MD_DOWN);
-    if (mq.matches) {
-      setOpen(true);
-    } else {
-      setOpen(sectionIndex === 0);
-    }
-  }, [sectionIndex]);
-
-  useEffect(() => {
-    applyLayoutDefault();
-    const mq = window.matchMedia(MD_DOWN);
-    mq.addEventListener("change", applyLayoutDefault);
-    return () => mq.removeEventListener("change", applyLayoutDefault);
-  }, [applyLayoutDefault]);
+  const isMobile = useIsMobile();
+  const [open, setOpen] = useResponsiveDefaultOpen(isMobile, defaultOpen);
+  const [shinePulse, triggerShinePulse] = useShinePulse();
 
   const { trigger, triggerInner, panel, chevron } = useMemo(
     () => accordionCardVariants({ open }),
@@ -151,19 +106,6 @@ export type AccordionCardGroupProps = {
 export const AccordionCardGroup = ({
   children,
   className,
-}: AccordionCardGroupProps) => {
-  const mapped = Children.map(children, (child, index) => {
-    if (!isValidElement(child)) {
-      return child;
-    }
-    return cloneElement(child as ReactElement<{ sectionIndex?: number }>, {
-      sectionIndex: index,
-    });
-  });
-
-  return (
-    <div className={classNames("flex flex-col gap-8", className)}>
-      {mapped}
-    </div>
-  );
-};
+}: AccordionCardGroupProps) => (
+  <div className={classNames("flex flex-col gap-8", className)}>{children}</div>
+);

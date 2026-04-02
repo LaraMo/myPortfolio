@@ -16,6 +16,12 @@ export const typographyVariants = tailwindVariants({
       small: "text-sm leading-normal",
       caption: "text-xs leading-normal",
       overline: "text-xs font-medium uppercase tracking-widest leading-normal",
+      /** Accordion section title drop cap (decorative; use with `as="span"` inside triggers). */
+      sectionTitleCap:
+        "shrink-0 font-heading text-5xl font-bold leading-none tracking-tight text-fuchsia-600 md:text-6xl dark:text-fuchsia-400",
+      /** Accordion section title remainder (use with `as="span"` inside triggers). */
+      sectionTitleRest:
+        "min-w-0 pb-0 font-heading text-xl font-normal leading-snug tracking-normal group-data-[size=sm]/card:text-lg",
     },
     gradient: {
       false: "",

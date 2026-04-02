@@ -14,6 +14,17 @@ const parser = new RSSParser();
 
 const imgSrcRe = /<img[^>]+src=["'](https:\/\/[^"']+)["']/i;
 
+type RssItem = {
+  title?: string;
+  link?: string;
+  pubDate?: string;
+  content?: string;
+  contentSnippet?: string;
+  summary?: string;
+  "content:encoded"?: string;
+  categories?: string[];
+};
+
 const stripHtml = (html: string): string =>
   html
     .replace(/<[^>]*>/g, " ")
@@ -28,7 +39,6 @@ const firstHttpsImageSrc = (html: string | undefined): string | null => {
   return match?.[1] ?? null;
 };
 
-/** RSS `pubDate` → English label, e.g. `May 16 2026`; `""` if missing or invalid. */
 const formatPublishedDate = (pubDate: string | undefined): string => {
   const raw = pubDate?.trim();
   if (!raw) {
@@ -49,34 +59,24 @@ const formatPublishedDate = (pubDate: string | undefined): string => {
     .trim();
 };
 
-const itemTags = (categories: string[] | undefined): string[] => {
+const convertCategoriesToTags	 = (categories: string[] | undefined): string[] => {
   if (!categories?.length) {
     return [];
   }
   return [...categories].filter(Boolean);
 };
 
-type RssItem = {
-  title?: string;
-  link?: string;
-  pubDate?: string;
-  content?: string;
-  contentSnippet?: string;
-  summary?: string;
-  "content:encoded"?: string;
-  categories?: string[];
-};
 
-const mapItemToArticle = (item: RssItem): Article | null => {
-  const title = item.title?.trim();
-  const href = item.link?.trim();
+const mapRssItemToArticle = (rssItem: RssItem): Article | null => {
+  const title = rssItem.title?.trim();
+  const href = rssItem.link?.trim();
   if (!title || !href) {
     return null;
   }
 
-  const encoded = item["content:encoded"];
-  const htmlBlob = [encoded, item.content, item.summary].filter(Boolean).join(" ");
-  const preview = item.contentSnippet?.trim() || stripHtml(htmlBlob);
+  const encoded = rssItem["content:encoded"];
+  const htmlBlob = [encoded, rssItem.content, rssItem.summary].filter(Boolean).join(" ");
+  const preview = rssItem.contentSnippet?.trim() || stripHtml(htmlBlob);
 
   const remoteImage = firstHttpsImageSrc(encoded);
 
@@ -87,12 +87,12 @@ const mapItemToArticle = (item: RssItem): Article | null => {
 
   return {
     title,
-    publishedAt: formatPublishedDate(item.pubDate),
+    publishedAt: formatPublishedDate(rssItem.pubDate),
     preview,
     imageSrc,
     imageAlt,
     href,
-    tags: itemTags(item.categories),
+    tags: convertCategoriesToTags	(rssItem.categories),
   };
 };
 
@@ -110,7 +110,7 @@ export const getMediumArticleEntries = async (): Promise<Article[]> => {
     const feed = await parser.parseString(xml);
 
     return feed.items
-      .map((item) => mapItemToArticle(item))
+      .map((rssItem) => mapRssItemToArticle(rssItem))
       .filter((article) => article !== null)
       .slice(0, MAX_ARTICLES);
   } catch {

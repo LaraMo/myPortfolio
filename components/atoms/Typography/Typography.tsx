@@ -21,6 +21,8 @@ const defaultElement: Record<
   small: "p",
   caption: "p",
   overline: "p",
+  sectionTitleCap: "span",
+  sectionTitleRest: "span",
 };
 
 export type TypographyProps = {

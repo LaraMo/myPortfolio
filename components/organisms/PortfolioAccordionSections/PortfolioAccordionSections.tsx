@@ -23,7 +23,7 @@ export const PortfolioAccordionSections = ({
   return (
     <div className="mx-auto max-w-4xl px-6 pb-20">
       <AccordionCardGroup>
-        <AccordionCard title={intro.title}>
+        <AccordionCard title={intro.title} defaultOpen>
           <Typography variant="body" as="p">
             {intro.emoji} {intro.body}
           </Typography>
@@ -84,7 +84,7 @@ export const PortfolioAccordionSections = ({
                 "w-full justify-center self-center sm:w-auto"
               )}
             >
-              {articles.catalogButtonLabel}
+              View full catalog here
             </Link>
           </div>
         </AccordionCard>
