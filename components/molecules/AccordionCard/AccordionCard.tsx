@@ -47,7 +47,7 @@ export const AccordionCard = ({
   return (
     <div
       className={classNames(
-        "accordion-card-shell group/accordion",
+        "accordion-card-shell group/accordion shadow-xl shadow-black/10 ring-1 ring-border/50 dark:shadow-black/40 dark:ring-border/40",
         shinePulse && "accordion-card-shell--pulse",
         className
       )}
