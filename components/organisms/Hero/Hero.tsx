@@ -1,10 +1,9 @@
-"use client";
-
 import type { ImageProps } from "next/image";
 
 import { Image } from "@/components/atoms/Image";
 import { Typography } from "@/components/atoms/Typography";
-import { useDisplayHeroSubtitles } from "./hooks/useDisplayHeroSubtitles";
+
+import { HeroChangingSubtitle } from "./components/HeroChangingSubtitle";
 
 export type HeroProps = {
   image: ImageProps["src"];
@@ -14,8 +13,6 @@ export type HeroProps = {
 };
 
 export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
-  const index = useDisplayHeroSubtitles(subtitles);
-
   return (
     <section
       className="mx-auto flex max-w-4xl flex-col gap-5 px-6 py-10 sm:flex-row sm:items-center sm:gap-14 sm:py-14"
@@ -26,6 +23,8 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
         alt={imageAlt}
         width={220}
         height={220}
+        preload
+        sizes="(max-width: 640px) 200px, 220px"
         shape="rectangle"
         glassRing
         className="mx-auto size-[200px] shrink-0 sm:mx-0 sm:size-[220px]"
@@ -36,10 +35,7 @@ export const Hero = ({ image, title, subtitles, imageAlt }: HeroProps) => {
             {title}
           </Typography>
         </h1>
-        <Typography variant="bodyLarge" className="mt-6" as="p">
-          <span className="text-muted-foreground">I am a </span>
-          <span className="font-medium text-foreground">{subtitles[index]}</span>
-        </Typography>
+        <HeroChangingSubtitle subtitles={subtitles} />
       </div>
     </section>
   );

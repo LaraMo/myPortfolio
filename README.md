@@ -17,7 +17,7 @@ A single-page portfolio site for **Liora Lara Mezirovsky**: intro, skills, work 
 | Area | Role |
 | --- | --- |
 | **Header** | Navigation and CV link. |
-| **Hero** | Portrait, name, rotating subtitles. |
+| **Hero** | Portrait, name, changing subtitles. |
 | **Accordion sections** | Intro, skills (with icons), work timeline, and articles list. |
 | **Footer** | Site footer. |
 
