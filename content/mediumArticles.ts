@@ -8,7 +8,7 @@ const SEVEN_DAYS_IN_SECONDS = 604800;
 
 const MAX_ARTICLES = 3;
 
-const FALLBACK_IMAGE_SRC = "/placeholder.png";
+const FALLBACK_IMAGE_SRC = "/placeholder.webp";
 
 const parser = new RSSParser();
 
