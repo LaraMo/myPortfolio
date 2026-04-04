@@ -22,7 +22,7 @@ export const articlesSectionMeta = {
 
 export const portfolioContent = {
   header: {
-    cvUrl: "https://example.com/liora-lara-mezirovsky-resume.pdf",
+    cvUrl: "https://www.canva.com/design/DAFl_JjDzGc/rzOQS-iXXXjw1WQ2IYeENg/view?utm_content=DAFl_JjDzGc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd5197a5647",
   },
   hero: {
     image: "/lara.png" as const,

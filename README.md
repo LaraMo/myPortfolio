@@ -2,6 +2,8 @@
 
 A single-page portfolio site for **Liora Lara Mezirovsky**: intro, skills, work history, and writing. It is built with the Next.js App Router, styled with Tailwind CSS, and uses accordion sections so visitors can explore content without leaving the page.
 
+**Live site:** [https://my-portfolio-six-lime-15.vercel.app/](https://my-portfolio-six-lime-15.vercel.app/)
+
 ## Goals
 
 - Present a clear professional profile: hero, short bio, and skills.
@@ -95,5 +97,7 @@ LaraMo/
 ```
 
 ## Deploy
+
+**Production:** [https://my-portfolio-six-lime-15.vercel.app/](https://my-portfolio-six-lime-15.vercel.app/)
 
 The site is a standard Next.js app and fits hosting such as [Vercel](https://vercel.com/) or any Node-compatible platform. See the [Next.js deployment docs](https://nextjs.org/docs/app/building-your-application/deploying) for details.
