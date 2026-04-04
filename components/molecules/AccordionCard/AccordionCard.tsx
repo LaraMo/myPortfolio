@@ -6,7 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { SectionTitle } from "@/components/molecules/SectionTitle";
 import { CardContent, CardHeader, Card as UiCard } from "@/components/ui/card";
 import { classNames } from "@/lib/utils/classNames/classNames";
-import { useIsMobile, useResponsiveDefaultOpen, useShinePulse } from "@/libs/hooks";
+import { useIsMobile, useResponsiveDefaultOpen, useShinePulse } from "@/lib/hooks";
 import { accordionCardVariants } from "./accordionCardVariants";
 
 export type AccordionCardProps = {

@@ -83,8 +83,7 @@ LaraMo/
 │   ├── organisms/            # Page sections (Hero, Footer, PortfolioAccordionSections, …)
 │   └── ui/                   # Registry-style primitives (button, card, badge, icon, …)
 ├── content/                  # Portfolio copy + Medium RSS integration
-├── lib/                      # App utilities (e.g. classNames, ThemeProvider)
-├── libs/                     # Shared hooks (e.g. media query helpers)
+├── lib/                      # Shared utilities (classNames, theme), hooks (e.g. matchMedia)
 ├── public/                   # Static files served at /
 ├── types/                    # Shared content TypeScript types
 ├── components.json           # shadcn-style component config
