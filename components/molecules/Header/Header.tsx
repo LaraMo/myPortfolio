@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import { Download, Moon, Sun } from "lucide-react";
+import { Moon, Pencil, Sun } from "lucide-react";
 
 import { BrandLmMark } from "@/components/atoms/BrandLmMark";
 import { Button } from "@/components/atoms/Button";
@@ -34,13 +34,12 @@ export const Header = ({ cvUrl }: HeaderProps) => {
         <div className="flex flex-wrap items-center justify-end gap-2 sm:ml-auto">
           <Link
             href={cvUrl}
-            download
             className={classNames(
               buttonVariants({ variant: "glass", size: "sm" }),
               "no-underline transition-colors duration-200 hover:bg-background/60",
             )}
           >
-            <Icon icon={Download} size="sm" className="mr-1" />
+            <Icon icon={Pencil} size="sm" className="mr-1" />
             Résumé
           </Link>
           <Button

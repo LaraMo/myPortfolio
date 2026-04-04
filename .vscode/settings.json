@@ -1,5 +1,8 @@
 {
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  },
   "terminal.integrated.env.osx": {
     "PATH": "/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
   }
