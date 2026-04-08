@@ -1,0 +1,131 @@
+# Opens a PR when you push a branch (except main). Git has no post-push hook,
+# so this runs on GitHub after the push completes.
+name: Auto-open pull request
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  open-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create PR if missing
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const base = "main";
+            const branch = context.ref.replace("refs/heads/", "");
+            const { owner, repo } = context.repo;
+            const head = `${owner}:${branch}`;
+
+            const firstLine = (msg) => (msg || "").split("\n")[0].trim();
+
+            const { data: openPrs } = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: "open",
+              head,
+              per_page: 1,
+            });
+
+            if (openPrs.length > 0) {
+              core.info(`PR already open for ${head}`);
+              return;
+            }
+
+            let comparison;
+            try {
+              const res = await github.rest.repos.compareCommits({
+                owner,
+                repo,
+                base,
+                head: branch,
+              });
+              comparison = res.data;
+            } catch (e) {
+              core.warning(`compareCommits failed: ${e.message}`);
+            }
+
+            const payloadCommits = context.payload.commits || [];
+            const commitsFromCompare = comparison && comparison.commits ? comparison.commits : [];
+            const useCommits =
+              commitsFromCompare.length > 0
+                ? commitsFromCompare.map((c) => ({
+                    sha: c.sha,
+                    line: firstLine(c.commit && c.commit.message),
+                  }))
+                : payloadCommits.map((c) => ({
+                    sha: c.id,
+                    line: firstLine(c.message),
+                  }));
+
+            const title =
+              useCommits.length > 0
+                ? useCommits[useCommits.length - 1].line || branch
+                : (context.payload.head_commit && firstLine(context.payload.head_commit.message)) ||
+                  branch;
+
+            const files = (comparison && comparison.files) || [];
+            let additions = 0;
+            let deletions = 0;
+            for (const f of files) {
+              additions += f.additions || 0;
+              deletions += f.deletions || 0;
+            }
+
+            const roots = new Set();
+            for (const f of files) {
+              if (f.filename) {
+                const top = f.filename.split("/")[0];
+                if (top) roots.add(top);
+              }
+            }
+            const areas = [...roots].sort();
+            const areasText =
+              areas.length > 0
+                ? areas.map((a) => "`" + a + "/`").join(", ")
+                : "_(no file list in compare — possibly empty diff)_";
+
+            const subjects = useCommits.map((c) => c.line).filter(Boolean);
+            const themes =
+              subjects.length > 0
+                ? subjects.join(" · ")
+                : "_(no commit messages available)_";
+
+            const fileCount = files.length;
+            const commitCount =
+              (comparison && comparison.total_commits) || useCommits.length || 0;
+
+            const contextBlock = [
+              "**Context**",
+              "",
+              `Branch \`${branch}\` is **${commitCount}** commit(s) ahead of \`${base}\`, touching **${fileCount}** file(s) (~**${additions}** additions, ~**${deletions}** deletions).`,
+              "",
+              `Primary areas in the diff: ${areasText}.`,
+              "",
+              `Summary from commit messages: ${themes}.`,
+            ].join("\n");
+
+            const changesLines = useCommits.map(
+              (c) => `- \`${c.sha.slice(0, 7)}\` — ${c.line || "_(no subject)_"}`,
+            );
+            const changesBlock = ["**Changes**", "", ...changesLines].join("\n");
+
+            const body = [contextBlock, "", changesBlock].join("\n");
+
+            await github.rest.pulls.create({
+              owner,
+              repo,
+              title,
+              head: branch,
+              base,
+              body,
+            });
+
+            core.info(`Opened PR: ${title}`);
