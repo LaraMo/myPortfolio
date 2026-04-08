@@ -26,6 +26,8 @@ export const portfolioContent = {
   },
   hero: {
     image: "/lara.webp",
+    /** Short line above the main name (e.g. eyebrow / section label). */
+    heroHead: "Portfolio",
     title: "Liora Lara Mezirovsky",
     imageAlt: "Portrait illustration of Liora Lara Mezirovsky",
     subtitles: [

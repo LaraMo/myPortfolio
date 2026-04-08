@@ -1,3 +1,4 @@
+import { Typography } from "@/components/atoms/Typography";
 import { Header } from "@/components/molecules/Header";
 import { Footer } from "@/components/organisms/Footer";
 import { Hero } from "@/components/organisms/Hero";
@@ -19,7 +20,16 @@ export default async function Home() {
           title={hero.title}
           subtitles={[...hero.subtitles]}
           imageAlt={hero.imageAlt}
-        />
+          heroHead={
+            <Typography variant="caption" as="p" color="muted" className="uppercase tracking-widest">
+              {hero.heroHead}
+            </Typography>
+          }
+        >
+          <Typography variant="body" color="muted" as="p">
+            Scroll down for more about my work, experience, and writing.
+          </Typography>
+        </Hero>
 
         <PortfolioAccordionSections sections={{ intro, skills, work, articles }} />
       </main>

@@ -1,5 +1,5 @@
 ---
-description: camelCase filenames for types, content, lib, and component variant modules
+description: camelCase filenames for types, content, lib (non-component modules)
 alwaysApply: true
 ---
 
@@ -13,5 +13,5 @@ alwaysApply: true
 
 ## `components/`
 
-- Follow **`component-module-layout.mdc`**: **PascalCase** main component files in atoms/molecules/organisms, **lowercase** `*.tsx` under `components/ui/<primitive>/`, and **camelCase** **`*Variants.ts`** for `tailwindVariants` (e.g. `typographyVariants.ts`, not `typography-variants.ts`).
+- **Component** file naming, layers, `*Variants.ts`, and barrels: **`component-standards.mdc`**.
 - **Barrels:** `index.ts` stays lowercase (standard entry filename).

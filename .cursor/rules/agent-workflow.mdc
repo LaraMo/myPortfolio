@@ -1,0 +1,39 @@
+---
+description: Plan before coding; one file per edit; approval when unclear
+alwaysApply: true
+---
+
+# Agent workflow (planning and edits)
+
+## Plan before implementing
+
+Applies to **non-trivial** work: new features, refactors, multi-file changes, or anything architectural. **Trivial** fixes (typo, obvious one-liner the user explicitly pointed to) may skip the full options list but should still **one-line** the intent before editing—unless the user’s message is purely “implement X” with full detail.
+
+### Before writing or editing code
+
+1. **Explain the approach** — Summarize how you would solve the problem (steps, boundaries, key files touched) without dumping a full patch yet.
+2. **Options** — When there are meaningful alternatives (e.g. client vs server component, new abstraction vs inline change, library vs hand-rolled), list **2–3 options** with short pros/cons.
+3. **Recommendation** — State **one preferred option** and **why** (maintainability, risk, fit with existing patterns, tradeoffs).
+4. **Confirmation** — **Do not implement** until the user confirms (e.g. “yes”, “go ahead”, “use option B”, “proceed”). If they already said in the **same** message to implement or apply a specific plan, treat that as confirmation.
+
+After confirmation, follow **Sequential edits** below.
+
+## Sequential edits with approval and review
+
+### Before modifying any file
+
+1. **State intent first** — Before applying edits, briefly say **which file** you will change, **what** you will change, and **why** (goal / constraint).
+2. **Side effects** — Call out **potential side effects**: broken imports, tests, types, RSC vs `"use client"` boundaries, bundle size, a11y, behavior change elsewhere, need to run lint/build.
+3. **Approval** — If the user’s request is **vague** (“clean this up”, “improve X”) or **multi-step**, **ask for explicit approval** on the proposed change to **that one file** before editing. If they **already** directed you to implement or fix something concrete (“add loading state to `Header.tsx`”), you may proceed **after** the pre-edit explanation in the same turn.
+
+### During multi-file work
+
+4. **One file per step** — Apply edits to **only one** file, then **stop**. Do not edit a second file in the same turn.
+5. **After the edit** — Summarize what changed (and point to the path). Treat this as a checkpoint; **do not** start the next file until the user approves or asks to continue (e.g. “looks good”, “continue”, “next”).
+
+### Exceptions (only when the user explicitly asks)
+
+- “Do it all in one go” / “batch these files”
+- Trivial paired edits they already approved as a single set (e.g. rename symbol across two agreed paths)
+
+If unsure, default to **explain → (approval if needed) → one file → pause**.

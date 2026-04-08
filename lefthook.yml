@@ -1,0 +1,7 @@
+# https://lefthook.dev
+# One-time setup: npx lefthook install
+
+pre-push:
+  commands:
+    quality:
+      run: npm run check

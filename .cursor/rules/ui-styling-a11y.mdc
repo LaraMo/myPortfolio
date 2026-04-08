@@ -1,19 +1,21 @@
 ---
-description: UI work—atomic design, tailwind-variants, DRY Tailwind, a11y, design tokens
+description: Atomic composition, DRY Tailwind, a11y, theme tokens (App Router UI)
 globs: "**/*.tsx"
 alwaysApply: false
 ---
 
-# UI and styling
+# UI composition, styling, and accessibility
+
+**Variants, `classNames`, and file layout:** **`component-standards.mdc`**. This rule covers **composition**, **a11y**, and **design tokens** when working in `.tsx` UI.
 
 ## Structure (atomic design)
 
 - Place UI in **`components/atoms`**, **`components/molecules`**, and **`components/organisms`** by responsibility (smallest → composed → section-level).
 - **`components/ui`** is for shadcn-style primitives only; build product UI by **composing** them in atoms/molecules/organisms—not by pasting large class strings into `app/page.tsx`.
 
-## Tailwind and variants
+## Tailwind and DRY styling
 
-- **Avoid duplicating** long Tailwind strings across files. Extract **variants** with **`tailwindVariants`** (`import { tv as tailwindVariants } from "tailwind-variants"`). Merge classes with **`classNames`** from `@/lib/utils/classNames/classNames`.
+- **Avoid duplicating** long Tailwind strings across files. Extract **variants** with **`tailwindVariants`** and merge with **`classNames`** as in **`component-standards.mdc`**.
 - Prefer **reusable components** (and shared variants) over **inline `style={}`** unless there is a clear reason (e.g. dynamic values not expressible in Tailwind without arbitrary values).
 
 ## Accessibility
@@ -29,4 +31,4 @@ alwaysApply: false
 
 ## Conflicts with quick hacks
 
-- If a shortcut would duplicate classes or break a11y, **call it out** and prefer the pattern above unless the user explicitly accepts debt.
+- If a shortcut would duplicate classes or break a11y, **call it out** and prefer the patterns in **`component-standards.mdc`** unless the user explicitly accepts debt.

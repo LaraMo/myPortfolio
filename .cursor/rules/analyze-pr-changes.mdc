@@ -1,0 +1,67 @@
+---
+description: PR review — scope, impact, and risk for LaraMo (Next.js portfolio)
+globs:
+alwaysApply: false
+---
+
+# Analyze PR changes (LaraMo)
+
+Use when reviewing a pull request or diff. The user should **@** changed files or paste the diff.
+
+## Goal
+
+Summarize **what changed**, **who is affected**, and **what to verify** before merge—aligned with this repo: **Next.js 16 App Router**, **TypeScript**, **Tailwind**, **atoms / molecules / organisms**, **Oxlint**, **Vitest**.
+
+## Ask if missing
+
+- PR intent: feature, fix, refactor, chore, content-only?
+- Breaking UX or content changes?
+- New dependencies or env vars?
+
+## Framework (adapt sections to the PR)
+
+### 1. Scope
+
+- Files touched (group by `app/`, `components/`, `content/`, `lib/`, config).
+- Approximate risk: **Low** / **Medium** / **High**.
+
+### 2. App Router & rendering
+
+- **Server vs client:** New or moved `"use client"`? Data fetching on server (`async` page/layout, `fetch` + `revalidate`) vs hooks in client?
+- **Routes / metadata:** Changes under `app/` affecting `metadata`, layouts, or static generation?
+- **Caching:** Touches `content/mediumArticles.ts` or other `fetch` + `next.revalidate` behavior?
+
+### 3. UI architecture
+
+- **Layering:** New UI in **atoms** / **molecules** / **organisms** / **`components/ui`** per **`component-standards.mdc`**?
+- **Barrels:** `index.ts` exports updated?
+- **Styling:** `tailwindVariants` in `*Variants.ts`, `classNames` from `@/lib/utils/classNames/classNames` (not `cn`)?
+
+### 4. Content & types
+
+- **`content/`** or **`types/content/`** changes: copy, structure, or RSS/article types?
+- External URLs (Medium, CV, images): valid and intentional?
+
+### 5. Quality gates (this repo)
+
+- **`npm run build`**, **`npx tsc --noEmit`**, **`npm run lint`** (Oxlint), **`npm run test:run`** — call out which are mandatory for this PR.
+
+### 6. Security & privacy (portfolio scope)
+
+- No secrets in code; safe `target="_blank"` + `rel` on external links; `next/image` `remotePatterns` if new image hosts.
+
+### 7. Performance & a11y
+
+- **Bundle:** Avoidable new client components or heavy imports?
+- **Images:** `next/image` with `alt`, sensible `sizes` / `preload` where relevant?
+- **a11y:** Headings, labels, accordion/button semantics if UI changed.
+
+## Output shape
+
+1. **TL;DR** (2–4 sentences)
+2. **Scope table** — area → files → note
+3. **Risks & breaking changes**
+4. **What reviewers should manually test** (checklist)
+5. **Positive notes** (if any)
+
+Tone: direct, constructive. Cite paths with ```startLine:endLine:path``` when useful.

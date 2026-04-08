@@ -1,0 +1,62 @@
+---
+description: PR review — actionable improvements for LaraMo
+globs:
+alwaysApply: false
+---
+
+# Suggest improvements (LaraMo)
+
+Build on **analyze-pr-changes** / **detect-code-smells** or use standalone with **@** files. Prefer **small, mergeable** suggestions over rewrites.
+
+## Goal
+
+Propose **concrete** improvements that fit **Next.js 16**, **App Router**, and this repo’s **component and style rules**.
+
+## Improvement areas (pick what applies)
+
+### Performance
+
+- Narrow **client** boundaries; **dynamic import** for heavy optional UI (only if justified).
+- **`next/image`:** `sizes`, `preload`, formats; avoid huge client icon lists—**lucide** tree-shaking is OK if imports stay named.
+- **RSS:** `fetch` caching / `revalidate` alignment with product needs.
+
+### Architecture
+
+- **Composition:** Extract atoms/molecules; keep **organisms** as sections.
+- **Colocation:** Variants in `*Variants.ts`; hooks next to components when single-use.
+- **Content:** Move copy/constants to `content/`; keep components dumb where possible.
+
+### Quality
+
+- **Types:** Shared shapes in `types/content/`; stricter props on public components.
+- **Oxlint:** Align with `.oxlintrc.json`; use **`lint:fix`** / dangerous fixes only when appropriate.
+- **Tests:** Vitest + Testing Library for hooks and pure utils; snapshot only when stable.
+
+### DX & consistency
+
+- **Barrels** (`index.ts`) export public API only.
+- **Imports:** `@/` aliases; match **`typescript-module-filenames.mdc`** and **`component-standards.mdc`**.
+
+### Security & a11y
+
+- **Links:** `rel` + `target` for external URLs; **jsx-a11y** rules satisfied.
+- **No PII** or tokens in client bundles.
+
+## Suggestion format
+
+For each item:
+
+| Field | Content |
+|--------|---------|
+| **Where** | Path (and optional line range) |
+| **Change** | One sentence |
+| **Why** | Benefit (perf, clarity, correctness) |
+| **Effort** | S / M / L |
+
+Avoid suggesting **large redesigns** unless the PR already goes that direction.
+
+## Output
+
+1. **Top 3 wins** (highest value / reasonable effort)
+2. **Optional backlog** (nice-to-have)
+3. If nothing to improve: say so briefly and note what was reviewed

@@ -1,0 +1,67 @@
+---
+description: PR review — code smells & anti-patterns for LaraMo (React/TS/Next)
+globs:
+alwaysApply: false
+---
+
+# Detect code smells (LaraMo)
+
+Use during PR review with **@** files or a diff. Focus on issues that conflict with **this** codebase—not generic Java-only rules.
+
+## Goal
+
+Flag **maintainability**, **correctness**, and **framework misuse** risks in **TypeScript + React + Next.js** code in this project.
+
+## Smells to prioritize (project-specific)
+
+### Boundaries
+
+- **`"use client"`** added without need (hooks, browser APIs, event handlers). Server Components should stay default for static UI and data.
+- **Props across RSC/client:** Passing non-serializable values server → client.
+- **Imports:** Client-only libs pulled into Server Components by mistake.
+
+### Structure
+
+- **God components** in `organisms/` doing everything—should split or compose molecules/atoms.
+- **Wrong layer:** App-specific UI under `components/ui/` (reserved for shadcn-style primitives); custom primitives belong in **`components/atoms/`** (or higher). See **`component-standards.mdc`**.
+- **Deep import paths** bypassing barrels (`@/components/...` barrels preferred).
+
+### React / hooks
+
+- **Missing deps** or wrong deps in `useEffect` (Oxlint may warn `react/exhaustive-deps`).
+- **Hydration risks:** `suppressHydrationWarning` abused; theme/subtitle patterns inconsistent with existing `Header` / `Hero` patterns.
+- **Effects** that could be CSS or server data instead.
+
+### TypeScript
+
+- **`any`**, unchecked `as`, loose public APIs.
+- **Types** duplicated instead of living in `types/` or next to content models.
+
+### Styling
+
+- **Raw `cn(`** or ad-hoc `clsx` — use **`classNames`** from `@/lib/utils/classNames/classNames`.
+- **Variants** inlined instead of `tailwindVariants` in `*Variants.ts` where the component exposes variant/size API.
+
+### Content & data
+
+- **RSS / Medium:** Error handling, revalidation window, empty feed UX in `content/mediumArticles.ts` or consumers.
+- **Hardcoded** URLs that belong in `content/portfolioContent.tsx`.
+
+### Tests
+
+- **Logic changes** without Vitest updates where hooks/utils are testable (`**/__test__/**`, `*.test.ts`).
+
+### Noise (lower priority here)
+
+- No DB layer—skip ORM/query smells unless you add a backend.
+- Adjust “long method” thresholds for small portfolio components.
+
+## Severity
+
+- **Block:** Security (secrets, XSS), broken types/build, a11y regressions on critical flows.
+- **Major:** Wrong RSC/client split, duplicated logic, missing tests for risky logic.
+- **Minor:** Naming, small duplication, optional refactors.
+
+## Output shape
+
+For each issue: **file**, **lines (if known)**, **smell name**, **severity**, **fix hint** (one or two sentences). Cap at ~10 issues unless the PR is huge; merge duplicates.

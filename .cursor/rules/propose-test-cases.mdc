@@ -1,0 +1,58 @@
+---
+description: PR review — test ideas for LaraMo (Vitest, Testing Library)
+globs:
+alwaysApply: false
+---
+
+# Propose test cases (LaraMo)
+
+Use when reviewing a PR that changes **behavior, hooks, or data shaping**. This project uses **Vitest** + **@testing-library/react** (see `vitest.config.ts`, `**/__test__/**`).
+
+## Goal
+
+Suggest **realistic** tests that match **existing patterns**—not enterprise DB/API coverage this app doesn’t have.
+
+## What to test here
+
+### High value
+
+- **Pure functions & hooks:** `lib/hooks`, `components/**/hooks/*.ts`, `content/mediumArticles.ts` helpers (parsing, formatting)—**unit tests**, mock `fetch` if needed.
+- **Presentational logic:** e.g. title splitting, subtitle index behavior—already covered by patterns like `useDisplayHeroSubtitles` tests.
+- **Regression:** Bugfix PRs get a test that **would have failed** before the fix.
+
+### Medium value
+
+- **Components:** Interaction or stateful behavior with **Testing Library** (`userEvent`, `screen`); avoid testing implementation details.
+- **Snapshots:** Only for **stable** small markup; prefer assertions on roles/labels.
+
+### Lower priority for this repo
+
+- Full **E2E** (Playwright/Cypress)—mention only for critical flows if you add tooling later.
+- **Load testing**—N/A unless you introduce heavy server work.
+
+## Framework-specific notes
+
+- **Server Components:** Prefer testing **pure** extracted logic or **client** hooks/components; don’t fight RSC without `renderToStaticMarkup` unless you already have a pattern.
+- **next/image / next-themes:** Mock or test at the **wrapper** (`components/atoms/Image`) if needed—not Next internals.
+
+## Test case template (per scenario)
+
+1. **ID / name** — short description
+2. **File under test** — path
+3. **Type** — unit | component
+4. **Arrange / Act / Assert** — bullet steps
+5. **Edge cases** — empty list, network error, reduced motion, etc.
+
+## Output shape
+
+1. **Summary** — what behavior changed and what must not regress
+2. **New tests** — numbered list with file path suggestion (e.g. next to hook: `hooks/__test__/foo.test.ts`)
+3. **Existing tests to update** — if any
+4. **Out of scope** — what you’re **not** recommending and why (e.g. E2E not in repo yet)
+
+Keep the list **short** (roughly **3–8** cases) unless the PR is enormous.
+
+## Commands (for reviewers)
+
+- `npm run test:run` — CI-style once
+- `npm run test` — watch locally
